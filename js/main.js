@@ -123,9 +123,20 @@
 
     var titleKey = document.body.getAttribute("data-title-key");
     if (titleKey) document.title = t(titleKey) + " | TEKNO";
-    var descKey = document.body.getAttribute("data-desc-key");
+
+    // Per-page SEO descriptions. The English copy is in the static HTML; the
+    // Arabic copy lives on <html data-desc-ar> (injected by scripts/seo-inject.js).
+    // The meta description is always in the page's current language.
     var meta = document.querySelector('meta[name="description"]');
-    if (descKey && meta) meta.setAttribute("content", t(descKey));
+    var metaOg = document.querySelector('meta[property="og:description"]');
+    var metaTw = document.querySelector('meta[name="twitter:description"]');
+    var en = document.documentElement.getAttribute('data-desc-en');
+    var ar = document.documentElement.getAttribute('data-desc-ar');
+    var descKey = document.body.getAttribute('data-desc-key');
+    var desc = (lang === 'ar' && ar) ? ar : (en || (descKey ? t(descKey) : (meta ? meta.getAttribute('content') : '')));
+    if (meta) meta.setAttribute('content', desc);
+    if (metaOg) metaOg.setAttribute('content', desc);
+    if (metaTw) metaTw.setAttribute('content', desc);
 
     var toggle = document.getElementById("lang-toggle") || document.querySelector(".lang-switch");
     if (toggle) toggle.setAttribute("aria-label", lang === "ar" ? "Switch to English" : "التبديل إلى العربية");
