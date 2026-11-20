@@ -1,5 +1,10 @@
 {
   "dependencies": {
     "playwright": "^1.65.1"
+  },
+  "scripts": {
+    "build": "node scripts/gen-sitemap.js && node scripts/seo-inject.js",
+    "sitemap": "node scripts/gen-sitemap.js",
+    "seo": "node scripts/seo-inject.js"
   }
 }
