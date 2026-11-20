@@ -43,8 +43,11 @@ for (const file of htmlFiles) {
   const rel = path.relative(ROOT, file).replace(/\\/g, '/');
   const title = titleFromHtml(html);
   const desc = descFor(title, rel);
-  const url = SITE_URL + '/' + rel.replace(/^index\.html$/, '');
-  const urlFinal = url.endsWith('/') ? url : url;
+  let urlPath = rel.replace(/\.html$/, '');
+  if (urlPath === 'index') urlPath = '';
+  urlPath = '/' + urlPath;
+  if (urlPath === '//') urlPath = '/';
+  const urlFinal = SITE_URL + urlPath;
 
   // Remove existing canonical / meta description / og / twitter / hreflang blocks we manage
   html = html.replace(/\s*<link rel="canonical"[^>]*>\n?/gi, '\n');

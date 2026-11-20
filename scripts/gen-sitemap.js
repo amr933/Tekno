@@ -14,14 +14,14 @@ function add(loc, priority = 0.8, changefreq = 'monthly') {
 }
 
 add('/', 1.0);
-add('/tools.html', 0.9);
+add('/tools', 0.9);
 
 const toolsDir = path.join(ROOT, 'tools');
 const files = fs.readdirSync(toolsDir)
   .filter(f => f.endsWith('.html'))
   .sort();
 for (const f of files) {
-  add('/tools/' + f, 0.8);
+  add('/tools/' + f.replace(/\.html$/, ''), 0.8);
 }
 
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
