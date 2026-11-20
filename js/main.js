@@ -115,6 +115,10 @@
       var key = node.getAttribute("data-i18n") || node.getAttribute("data-key");
       if (key && TEKNO.keys[key]) node.textContent = t(key);
     });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-i18n-html]"), function (node) {
+      var key = node.getAttribute("data-i18n-html");
+      if (key && TEKNO.keys[key]) node.innerHTML = t(key);
+    });
     Array.prototype.forEach.call(document.querySelectorAll("[data-i18n-attr]"), function (node) {
       // Format: attr:key
       var parts = node.getAttribute("data-i18n-attr").split(":");
