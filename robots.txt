@@ -1,0 +1,6 @@
+# TEKNO robots.txt
+# Replace the Sitemap line with your live domain before deploying.
+User-agent: *
+Allow: /
+
+Sitemap: https://your-domain.example/sitemap.xml

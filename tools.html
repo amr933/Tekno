@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineering Tools Directory | TEKNO</title>
+  <meta name="description" content="Browse free engineering calculators for civil, mechanical and electrical engineering, and architecture.">
+  <link rel="canonical" href="https://your-domain.example/tools.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-root="" data-page="tools" data-title-key="title_tools" data-desc-key="desc_tools">
+  <div id="site-header"></div>
+
+  <main>
+    <section style="padding-bottom:1.5rem">
+      <div class="container">
+        <h1 data-i18n="tools_title">Tools directory</h1>
+        <p class="muted" data-i18n="desc_tools" style="color:var(--muted)">Browse free engineering calculators for civil, mechanical and electrical engineering, and architecture.</p>
+
+        <div class="search-row" style="margin-top:1.2rem">
+          <label for="tools-q" class="sr-only" data-i18n="tools_search_label">Search tools</label>
+          <input id="tools-q" type="search" data-i18n-attr="placeholder:search_placeholder" placeholder="e.g. voltage drop, steel, pump">
+        </div>
+
+        <div id="tools-chips" class="chips" role="group" aria-label="Category"></div>
+
+        <p id="tools-count" class="muted" style="color:var(--muted);font-size:.9rem"></p>
+      </div>
+    </section>
+
+    <section style="border-top:0;padding-top:0">
+      <div class="container">
+        <div id="tools-grid" class="grid"></div>
+        <p id="tools-empty" class="empty" data-i18n="no_results" hidden>No tools match your search.</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/translations.js"></script>
+  <script src="js/translations-library-1.js"></script>
+  <script src="js/translations-library-2.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/calculators.js"></script>
+  <script src="js/calc-library-1.js"></script>
+  <script src="js/calc-library-2.js"></script>
+  <script src="js/calc-library-3.js"></script>
+  <script src="js/calc-library-4.js"></script>
+  <script src="js/translations-ar-batch.js"></script>
+  <script src="js/registry.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
