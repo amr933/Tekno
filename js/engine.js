@@ -118,7 +118,7 @@
         self.raw[f.id] = f.initial != null ? String(f.initial) : "";
         if (f.unit) {
           if (Array.isArray(f.unit)) {
-            self.raw[f.unit[0][0]] = f.unit[0][0];
+            self.raw[f.id + "_unit"] = f.unit[0][0];
           } else {
             self.raw[f.unit.id] = f.unit.default;
           }
@@ -156,7 +156,7 @@
       }
       if (f.unit) {
         if (Array.isArray(f.unit)) {
-          values[f.unit[0][0]] = self.raw[f.unit[0][0]];
+          values[f.id + "_unit"] = self.raw[f.id + "_unit"];
         } else {
           values[f.unit.id] = self.raw[f.unit.id];
         }
@@ -273,11 +273,12 @@
             defId = f.unit.id; defaultId = f.unit.default || f.unit.id;
             opts = f.unit.options.map(function (pair) { return [pair[0], t(pair[1])]; });
           }
-          var uid = fieldKey(def, self.variant, defId);
-          var usel = selectEl(uid, opts, self.raw[defaultId]);
-          usel.setAttribute("data-field", defId);
+          var unitKey = f.id + "_unit";
+          var uid = fieldKey(def, self.variant, unitKey);
+          var usel = selectEl(uid, opts, self.raw[unitKey]);
+          usel.setAttribute("data-field", unitKey);
           usel.setAttribute("aria-label", t("calc_unit"));
-          usel.addEventListener("change", function () { self.raw[defId] = usel.value; });
+          usel.addEventListener("change", function () { self.raw[unitKey] = usel.value; });
           row.appendChild(usel);
         }
         fieldWrap.appendChild(row);

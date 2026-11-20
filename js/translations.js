@@ -168,7 +168,7 @@
     res_kw_real: ["Real power", "القدرة الفعالة"],
     res_kva: ["Apparent power", "القدرة الظاهرية"],
     res_kvar: ["Reactive power", "القدرة غير الفعالة"],
-    res_w: ["Real power (W)", "القدرة الفعالة (واط)"],
+    res_w: ["Humidity ratio", "الرطوبة النسبية"],
     res_amps: ["Current", "التيار"],
     res_drop_v: ["Voltage drop", "هبوط الجهد"],
     res_drop_pct: ["Voltage drop (%)", "هبوط الجهد (%)"],

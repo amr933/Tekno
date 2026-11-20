@@ -63,9 +63,9 @@
   // Heat exchanger LMTD
   reg("lmtd", { calc: { label: "var_calc", fields: [
     { id: "Thi", type: "number", label: "f_thi", initial: 80 },
-    { id: "Tho", type: "number", label: "f_tho", initial: 60 },
-    { id: "Tci", type: "number", label: "f_tci", initial: 30 },
-    { id: "Tco", type: "number", label: "f_tco", initial: 50 }
+    { id: "Tho", type: "number", label: "f_tho", initial: 65 },
+    { id: "Tci", type: "number", label: "f_tci", initial: 25 },
+    { id: "Tco", type: "number", label: "f_tco", initial: 55 }
   ], compute: function (v) {
     var dT1 = v.Thi - v.Tco; var dT2 = v.Tho - v.Tci;
     var lmtd = (dT1 - dT2) / Math.log(dT1 / dT2);

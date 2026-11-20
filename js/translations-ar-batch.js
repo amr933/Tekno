@@ -7,7 +7,7 @@
   var A = {
     calc_bending_stress_title: ["Bending Stress Calculator", "حاسبة إجهاد الانحناء"],
     calc_section_modulus_title: ["Section Modulus Calculator", "حاسبة معامل المقطع"],
-    calc_column_buckling_title: ["Column Buckling Calculator", "حاسبة ان座لاج العمود"],
+    calc_column_buckling_title: ["Column Buckling Calculator", "حاسبة انكماش العمود"],
     calc_pipe_flow_title: ["Pipe Flow Calculator", "حاسبة تدفق الأنابيب"],
     calc_ideal_gas_title: ["Ideal Gas Calculator", "حاسبة الغاز المثالي"],
     calc_motor_current_title: ["Motor Current Calculator", "حاسبة تيار المحرك"],
