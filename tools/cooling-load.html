@@ -22,6 +22,46 @@
   <meta name="twitter:title" content="Cooling Load Calculator | TEKNO">
   <meta name="twitter:description" content="Estimate sensible and latent cooling load for air conditioning from heat gains through the envelope, people and equipment.">
   <meta name="twitter:image" content="https://tekno-eg.pages.dev/assets/og-card.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between sensible and latent load?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sensible load changes air temperature. Latent load changes air moisture content (condensation). Both must be removed by the cooling coil."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the result in TR as well as kW?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many regions (Middle East, US) specify cooling equipment in tons of refrigeration. 1 TR = 12,000 BTU/h = 3.516853 kW exactly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this include ventilation load?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only if you add the ventilation sensible and latent components to Qs and Ql before entering them. The tool just adds the two numbers you provide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this for heating load?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Heating load calculations use different assumptions (no latent component, different safety factors). Use a heating load calculator."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-root="../" data-page="calc" data-title-key="calc_cooling_load_title" data-desc-key="calc_cooling_load_desc">
   <div id="site-header"></div>
@@ -45,11 +85,33 @@
         <p><a href="../tools.html" data-key="back_to_tools">Back to all tools</a></p>
       </div>
     </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <p data-i18n="calc_cooling_load_how" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <p data-i18n="calc_cooling_load_example" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n="calc_cooling_load_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
   </main>
   <div id="site-footer"></div>
   <script src="../js/translations.js"></script>
   <script src="../js/translations-library-1.js"></script>
   <script src="../js/translations-library-2.js"></script>
+  <script src="../js/translations-library-3.js"></script>
   <script src="../js/engine.js"></script>
   <script src="../js/calculators.js"></script>
   <script src="../js/translations-ar-batch.js"></script>

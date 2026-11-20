@@ -23,6 +23,46 @@
   <meta name="twitter:title" content="Cable Voltage Drop Calculator | TEKNO">
   <meta name="twitter:description" content="Check voltage drop along copper or aluminium cables for single-phase and three-phase circuits, and confirm the cable size keeps drop within limits.">
   <meta name="twitter:image" content="https://tekno-eg.pages.dev/assets/og-card.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the 3% voltage drop guideline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 3% guideline (IEC 60364-4-41, NEC 210.19) recommends that voltage drop on branch circuits should not exceed 3% of the nominal voltage. For feeders, a combined 5% total (feeder + branch) is often allowed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this for DC circuits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool is for AC circuits only. For DC, use \u0394V = 2 \u00d7 I \u00d7 L \u00d7 R (single conductor out and back)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is reactance included?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AC circuits have inductance. The reactance term (x\u00b7sin \u03c6) can add 10\u201330% to the drop at high power factors or large conductors. Ignoring it underestimates the drop."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What power factor should I enter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the load's rated power factor (cos \u03c6). For motors, typical values are 0.8\u20130.9. For resistive loads, use 1.0."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-root="../" data-page="calc" data-title-key="calc_voltage_drop_title" data-desc-key="calc_voltage_drop_desc">
   <div id="site-header"></div>
@@ -49,6 +89,27 @@
         <p><a href="../tools.html" data-key="back_to_tools">← Back to all tools</a></p>
       </div>
     </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <p data-i18n="calc_voltage_drop_how" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <p data-i18n="calc_voltage_drop_example" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n="calc_voltage_drop_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
@@ -56,6 +117,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/translations-library-1.js"></script>
   <script src="../js/translations-library-2.js"></script>
+  <script src="../js/translations-library-3.js"></script>
   <script src="../js/engine.js"></script>
   <script src="../js/calculators.js"></script>
   <script src="../js/translations-ar-batch.js"></script>

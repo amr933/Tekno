@@ -23,6 +23,46 @@
   <meta name="twitter:title" content="Beam Deflection Calculator | TEKNO">
   <meta name="twitter:description" content="Find the midspan deflection of a simply supported beam under a uniform or concentrated load from span, load and section stiffness EI.">
   <meta name="twitter:image" content="https://tekno-eg.pages.dev/assets/og-card.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I use this for cantilever beams?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool is for simply supported beams only. Cantilever deflection formulas are different (\u03b4 = wL\u2074/8EI for UDL, \u03b4 = PL\u00b3/3EI for tip load)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the span \u00f7 360 limit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A common serviceability deflection limit for floors and roofs in many codes (EN 1992, ACI 318, BS 8110). It is not a universal limit; check your governing code for the applicable limit (span/250, span/300, span/360, etc.)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this include self-weight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Enter the total UDL including self-weight, or add self-weight to w before calculating."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use I in cm\u2074?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Select 'cm\u2074' from the I unit dropdown. The tool converts to m\u2074 internally (1 cm\u2074 = 10\u207b\u2078 m\u2074)."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-root="../" data-page="calc" data-title-key="calc_beam_deflection_title" data-desc-key="calc_beam_deflection_desc">
   <div id="site-header"></div>
@@ -49,6 +89,27 @@
         <p><a href="../tools.html" data-key="back_to_tools">← Back to all tools</a></p>
       </div>
     </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <p data-i18n="calc_beam_deflection_how" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <p data-i18n="calc_beam_deflection_example" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n="calc_beam_deflection_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
@@ -56,6 +117,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/translations-library-1.js"></script>
   <script src="../js/translations-library-2.js"></script>
+  <script src="../js/translations-library-3.js"></script>
   <script src="../js/engine.js"></script>
   <script src="../js/calculators.js"></script>
   <script src="../js/translations-ar-batch.js"></script>

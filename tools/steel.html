@@ -23,6 +23,46 @@
   <meta name="twitter:title" content="Steel Bar Weight Calculator | TEKNO">
   <meta name="twitter:description" content="Find the weight of reinforcing steel bars from bar diameter in mm and length in metres, covering common rebar sizes with the unit-weight formula shown.">
   <meta name="twitter:image" content="https://tekno-eg.pages.dev/assets/og-card.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does this work for deformed (ribbed) bars?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The formula assumes plain round bar. Deformed bars are about 1\u20132% heavier due to ribs. For precise schedules, use the manufacturer's mass-per-metre table."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What steel density is assumed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "7850 kg/m\u00b3, the standard density for carbon steel reinforcement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate multiple bars at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This tool calculates one bar size at a time. For a full schedule, calculate each size and multiply by the number of bars of that size."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why 162 in the denominator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It comes from (4/\u03c0) \u00d7 (1/7850) \u00d7 10\u2076 = 162.18, rounded to 162 for quick mental math."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-root="../" data-page="calc" data-title-key="calc_steel_weight_title" data-desc-key="calc_steel_weight_desc">
   <div id="site-header"></div>
@@ -49,6 +89,27 @@
         <p><a href="../tools.html" data-key="back_to_tools">← Back to all tools</a></p>
       </div>
     </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <p data-i18n="calc_steel_weight_how" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <p data-i18n="calc_steel_weight_example" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n="calc_steel_weight_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
@@ -56,6 +117,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/translations-library-1.js"></script>
   <script src="../js/translations-library-2.js"></script>
+  <script src="../js/translations-library-3.js"></script>
   <script src="../js/engine.js"></script>
   <script src="../js/calculators.js"></script>
   <script src="../js/translations-ar-batch.js"></script>

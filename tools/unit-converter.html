@@ -23,6 +23,46 @@
   <meta name="twitter:title" content="Unit Converter | TEKNO">
   <meta name="twitter:description" content="Convert between units of length, area, volume, pressure, flow, temperature, power and weight, with the exact conversion factor shown for every step.">
   <meta name="twitter:image" content="https://tekno-eg.pages.dev/assets/og-card.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does temperature not use a simple ratio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Celsius, Fahrenheit and Kelvin have different zero points. 0 \u00b0C = 273.15 K = 32 \u00b0F. A ratio works only when zero is shared (e.g., length, weight)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the conversion factors exact?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most are exact definitions (e.g., 1 inch = 25.4 mm exactly). Some are defined values (e.g., 1 psi = 6894.757 Pa exactly). The tool uses NIST values."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I convert between mass and force (kg to N)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool converts within the same physical quantity. Mass (kg) and force (N) are different quantities; use F = m \u00d7 g with g = 9.81 m/s\u00b2."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What flow units are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L/s, m\u00b3/h, m\u00b3/s, GPM (US), CFM, and more. Select 'Flow' as the quantity."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-root="../" data-page="calc" data-title-key="calc_unit_converter_title" data-desc-key="calc_unit_converter_desc">
   <div id="site-header"></div>
@@ -49,6 +89,27 @@
         <p><a href="../tools.html" data-key="back_to_tools">← Back to all tools</a></p>
       </div>
     </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <p data-i18n="calc_unit_converter_how" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <p data-i18n="calc_unit_converter_example" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n="calc_unit_converter_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
   </main>
 
   <div id="site-footer"></div>
@@ -56,6 +117,7 @@
   <script src="../js/translations.js"></script>
   <script src="../js/translations-library-1.js"></script>
   <script src="../js/translations-library-2.js"></script>
+  <script src="../js/translations-library-3.js"></script>
   <script src="../js/engine.js"></script>
   <script src="../js/calculators.js"></script>
   <script src="../js/translations-ar-batch.js"></script>
