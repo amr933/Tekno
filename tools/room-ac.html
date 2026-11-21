@@ -16,6 +16,47 @@
 
   <link rel="stylesheet" href="../css/style.css">
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is the HP in the result the real horsepower?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Market sizes are nominal: a 2.25 HP unit in Egypt is an 18,000 BTU/h machine. That is why the calculator also shows actual computed horsepower at the common approximate rate of 8,000 BTU/h per HP."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the room is a kitchen or has an open kitchen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kitchens add a large heat load. ENERGY STAR suggests adding about 4,000 BTU/h for a kitchen; pick the larger size or consult a technician."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the result work for high ceilings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The calculator does not take ceiling height; the Fujitsu guide's rule of thumb assumes about 2.4 m ceilings. Higher ceilings mean more volume and more capacity than the area alone suggests."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the result binding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, it is an indicative estimate. Real load depends on windows, appliances and the building itself; when in doubt, consult an AC technician."
+        }
+      }
+    ]
+  }
+  </script>
+
 
 
 
@@ -55,6 +96,34 @@
         <h2 data-key="about_heading">About this calculator</h2>
         <p data-key="calc_room_ac_about" style="max-width:75ch">Enter the room area and conditions. The tool applies a 550 BTU/h per m² base with factors for sun, insulation, occupancy and a top-floor roof, then recommends the next standard unit size.</p>
         <p><a href="../tools.html" data-key="back_to_tools">← Back to all tools</a></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <p data-i18n="calc_room_ac_how" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <p data-i18n="calc_room_ac_example" style="max-width:75ch"></p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n-html="calc_room_ac_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="refs_heading">References</h2>
+        <div data-i18n-html="calc_room_ac_refs" style="max-width:75ch"></div>
       </div>
     </section>
   </main>

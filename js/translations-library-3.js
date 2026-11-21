@@ -10,6 +10,7 @@
     how_heading: ["How it works", "كيف تعمل"],
     example_heading: ["Worked example", "مثال محلول"],
     faq_heading: ["FAQ", "الأسئلة الشائعة"],
+    refs_heading: ["References", "المصادر والمراجع"],
 
     // ===================== VOLTAGE DROP =====================
     calc_voltage_drop_how: [

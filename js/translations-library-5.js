@@ -129,7 +129,65 @@
     lib_opt_pvc: ["PVC (1400 kg/m³)", "بلاستيك PVC (1400 كجم/م³)"],
     res_pipe_weight: ["Pipe weight", "وزن الماسورة"],
     res_kgm: ["Weight per metre", "الوزن لكل متر"],
-    lib_as_pipe: ["Plain hollow cylinder, constant wall, material density as listed.", "أسطوانة مجوفة منتظمة السماكة بكثافة الخامة الموضحة."]
+    lib_as_pipe: ["Plain hollow cylinder, constant wall, material density as listed.", "أسطوانة مجوفة منتظمة السماكة بكثافة الخامة الموضحة."],
+
+    // Room AC page content (approved model, 2026-11-21)
+    calc_room_ac_how: [
+      "This calculator estimates the cooling capacity a room needs in BTU/h. " +
+      "It starts from the floor area in square metres times 550 BTU/h per m², a rule-of-thumb rate suited to hot climates, then adjusts for conditions: " +
+      "strong sun ×1.15 or shaded ×0.90, poor insulation ×1.15 or good ×0.90, a top-floor room under the roof ×1.10, plus 600 BTU/h for every person beyond the first two. " +
+      "It then recommends the nearest market unit size above the required capacity (1.5, 2.25, 3, 4, 5, 6 or 7.5 HP), " +
+      "and shows the result in refrigeration tons, kilowatts and approximate HP at 8,000 BTU/h per HP as used in the Egyptian market. " +
+      "The exact figures (550 BTU/h per m², the adjustment factors, 8,000 BTU/h per HP) are TEKNO's own calibration informed by the published rules of thumb cited in the references below, not text from any binding standard.",
+      "تقدّر هذه الحاسبة قدرة التبريد التي تحتاجها الغرفة بوحدة BTU/h. " +
+      "تبدأ من مساحة الغرفة بالمتر المربع مضروبة في 550 وحدة لكل متر مربع، وهي قاعدة إرشادية مناسبة للمناطق الحارة، ثم تعدّل الناتج حسب الظروف: " +
+      "شمس قوية ×1.15 أو مظللة ×0.90، عزل ضعيف ×1.15 أو جيد ×0.90، الدور الأخير تحت السطح مباشرة ×1.10، بالإضافة إلى 600 وحدة عن كل شخص بعد أول شخصين. " +
+      "بعدها تقترح الحاسبة أقرب فئة سوقية أكبر من القدرة المطلوبة (1.5 أو 2.25 أو 3 أو 4 أو 5 أو 6 أو 7.5 حصان)، " +
+      "وتعرض النتيجة أيضًا بالطن التبريدي والكيلوواط وبالحصان التقريبي باعتبار 8000 وحدة لكل حصان كما هو متداول في السوق المصري. " +
+      "الأرقام الدقيقة (550 وحدة لكل متر مربع ومعاملات التعديل و8000 وحدة للحصان) معايرة خاصة بـTEKNO مستندة إلى القواعد الإرشادية المنشورة في المراجع أدناه، وليست نصًا من معيار ملزم."
+    ],
+    calc_room_ac_example: [
+      "Example: a 24 m² living room, average sun, average insulation, 3 occupants, not on the top floor. " +
+      "Base: 24 × 550 = 13,200 BTU/h. Factors all ×1. Occupancy: 600 × (3 − 2) = 600 BTU/h. Total: 13,800 BTU/h. " +
+      "The nearest market size above that is 18,000 BTU/h, a 2.25 HP unit (1.15 TR, 4.0444 kW, 1.725 HP actual).",
+      "مثال: صالة معيشة مساحتها 24 م²، تعرض متوسط للشمس، عزل متوسط، 3 أشخاص، وليست في الدور الأخير. " +
+      "الأساس: 24 × 550 = 13,200 وحدة/ساعة. المعاملات كلها ×1. إضافة الأشخاص: 600 × (3 − 2) = 600 وحدة/ساعة. الإجمالي: 13,800 وحدة/ساعة. " +
+      "أقرب فئة سوقية أكبر منها هي 18,000 وحدة/ساعة أي تكييف 2.25 حصان (1.15 طن تبريدي، 4.0444 كيلوواط، 1.725 حصان فعلي)."
+    ],
+    calc_room_ac_faq: [
+      "<dl>" +
+      "  <dt>Is the HP in the result the real horsepower?</dt>" +
+      "  <dd>Market sizes are nominal: a 2.25 HP unit in Egypt is an 18,000 BTU/h machine. That is why the calculator also shows actual computed horsepower at the common approximate rate of 8,000 BTU/h per HP.</dd>" +
+      "  <dt>What if the room is a kitchen or has an open kitchen?</dt>" +
+      "  <dd>Kitchens add a large heat load. ENERGY STAR suggests adding about 4,000 BTU/h for a kitchen; pick the larger size or consult a technician.</dd>" +
+      "  <dt>Does the result work for high ceilings?</dt>" +
+      "  <dd>The calculator does not take ceiling height; the Fujitsu guide's rule of thumb assumes about 2.4 m ceilings. Higher ceilings mean more volume and more capacity than the area alone suggests.</dd>" +
+      "  <dt>Is the result binding?</dt>" +
+      "  <dd>No, it is an indicative estimate. Real load depends on windows, appliances and the building itself; when in doubt, consult an AC technician.</dd>" +
+      "</dl>",
+      "<dl>" +
+      "  <dt>هل الحصان في النتيجة هو الحصان الحقيقي؟</dt>" +
+      "  <dd>الفئات السوقية اسمية: تكييف «2.25 حصان» في السوق المصري هو وحدة بسعة 18,000 وحدة/ساعة. لذلك تعرض الحاسبة أيضًا الحصان الفعلي المحسوب بمعدل تقريبي متداول 8,000 وحدة لكل حصان.</dd>" +
+      "  <dt>ماذا لو كانت الغرفة مطبخًا أو فيها مطبخ مفتوح؟</dt>" +
+      "  <dd>المطبخ يضيف حملًا حراريًا كبيرًا. توصي ENERGY STAR بإضافة نحو 4,000 وحدة للمطبخ؛ عندها اختر الفئة الأكبر أو راجع مختصًا.</dd>" +
+      "  <dt>هل تصلح النتيجة للأسقف العالية؟</dt>" +
+      "  <dd>الحاسبة لا تدخل ارتفاع السقف في الحساب، والقاعدة الإرشادية في دليل Fujitsu تفترض سقفًا بنحو 2.4 متر. للأسقف الأعلى من ذلك يزيد حجم الغرفة وتحتاج قدرة أكبر من ناتج المساحة وحدها.</dd>" +
+      "  <dt>هل النتيجة ملزمة؟</dt>" +
+      "  <dd>لا، هي تقدير إرشادي. الحمل الفعلي يتأثر بالنوافذ والأجهزة وحالة المبنى؛ عند الشك راجع فني تكييف.</dd>" +
+      "</dl>"
+    ],
+    calc_room_ac_refs: [
+      "<ul>" +
+      "  <li><a href=\"https://www.energystar.gov/products/room_air_conditioners\" target=\"_blank\" rel=\"noopener\">ENERGY STAR: Room Air Conditioners</a> — sizing from room area, +10% for heavy sun, −10% for heavy shade, +600 BTU/h per person beyond two, +4,000 BTU/h for kitchens.</li>" +
+      "  <li><a href=\"https://www.generalairstage.com.au/help-centre/helpful-articles/details/air-conditioner-room-size-guide\" target=\"_blank\" rel=\"noopener\">General Airstage (Fujitsu): Room Size Guide</a> — about 0.15 kW per m² as a rule of thumb, with ceiling-height, insulation and sun factors.</li>" +
+      "  <li><a href=\"https://btech.com/ar/carrier-inverter-split-air-conditioner-2-25hp-cooling-white-khct18dn.html\" target=\"_blank\" rel=\"noopener\">B.TECH: Carrier 2.25 HP</a> — Egyptian market listing pairing the 2.25 HP class with 18,000 BTU/h cooling capacity.</li>" +
+      "</ul>",
+      "<ul>" +
+      "  <li><a href=\"https://www.energystar.gov/products/room_air_conditioners\" target=\"_blank\" rel=\"noopener\">ENERGY STAR: Room Air Conditioners</a> — التقدير من مساحة الغرفة، +10% للشمس الشديدة، −10% للظل الشديد، +600 وحدة لكل شخص بعد أول شخصين، +4,000 وحدة للمطبخ.</li>" +
+      "  <li><a href=\"https://www.generalairstage.com.au/help-centre/helpful-articles/details/air-conditioner-room-size-guide\" target=\"_blank\" rel=\"noopener\">General Airstage (Fujitsu): Room Size Guide</a> — قاعدة إرشادية بنحو 0.15 كيلوواط لكل متر مربع، مع عوامل ارتفاع السقف والعزل والشمس.</li>" +
+      "  <li><a href=\"https://btech.com/ar/carrier-inverter-split-air-conditioner-2-25hp-cooling-white-khct18dn.html\" target=\"_blank\" rel=\"noopener\">B.TECH: تكييف كارير 2.25 حصان</a> — مثال من السوق المصري يقرن فئة 2.25 حصان بسعة تبريد 18,000 وحدة حرارية.</li>" +
+      "</ul>"
+    ]
 
   });
 })();

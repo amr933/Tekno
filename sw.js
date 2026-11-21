@@ -1,6 +1,6 @@
 /* TEKNO service worker: offline shell + runtime cache.
  * Bump CACHE on every deploy so updates roll out cleanly. */
-var CACHE = "tekno-v6";
+var CACHE = "tekno-v7";
 var SHELL = [
   "/",
   "/tools",
