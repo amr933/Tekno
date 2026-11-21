@@ -140,7 +140,6 @@
     for (var i = 0; i < INV_SIZES.length; i++) if (INV_SIZES[i] >= va) { rec = INV_SIZES[i]; break; }
     var E = P * v.h;
     var ah = E / (Vb * dod * 0.9);
-    var n100 = Math.ceil(ah / 100);
     return {
       main: rec
         ? { label: "res_inverter", value: rec, unit: "VA" }
@@ -148,8 +147,7 @@
       others: [
         { label: "res_va_req", value: va, unit: "VA" },
         { label: "res_energy", value: E, unit: "Wh" },
-        { label: "res_battery_ah", value: ah, unit: "Ah @ " + Vb + " V" },
-        { label: "res_batt_100", value: n100, unit: "× 100 Ah" }
+        { label: "res_battery_ah", value: ah, unit: "Ah @ " + Vb + " V" }
       ],
       formula: "VA = P ÷ 0.8 × 1.25; Ah = P × h ÷ (V × DoD × 0.9)",
       steps: [

@@ -16,6 +16,48 @@
 
   <link rel="stylesheet" href="../css/style.css">
 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does it allow for several circuits in one conduit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Grouping reduces cable ampacity (the k2 factor in the tables), so if several circuits share one conduit, pick a larger size or apply the grouping factors yourself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it check voltage drop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. For long runs, check the voltage drop on the resulting size with the voltage-drop calculator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Copper or aluminium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The values are for copper with PVC insulation only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does it relate to the breaker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The cable ampacity Iz must be at least the rating of the breaker protecting it. Cross-check with the breaker-size calculator."
+      }
+    }
+  ]
+}
+  </script>
+
+
 
 
 
@@ -57,6 +99,35 @@
         <p><a href="../tools.html" data-key="back_to_tools">← Back to all tools</a></p>
       </div>
     </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <div data-i18n-html="calc_cable_size_how" style="max-width:75ch"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <div data-i18n-html="calc_cable_size_example" style="max-width:75ch"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n-html="calc_cable_size_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="refs_heading">References</h2>
+        <div data-i18n-html="calc_cable_size_refs" style="max-width:75ch"></div>
+      </div>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>

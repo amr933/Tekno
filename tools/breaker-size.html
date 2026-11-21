@@ -16,6 +16,48 @@
 
   <link rel="stylesheet" href="../css/style.css">
 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "When is a load continuous?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per the NEC definition: 3 hours or more at a steady state. TEKNO applies the 1.25 margin always, as a conservative choice, even to non-continuous loads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about motors?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Motor loads get different treatment (high starting current and the MOCP on the equipment nameplate). This rule is for general loads only."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Must the cable match the breaker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes: the breaker must not exceed the ampacity of the cable it protects (NEC 240.4 and the IEC coordination equivalent). Use the cable-size calculator with the result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do NEC and IEC ratings differ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Right: the US list goes 15/20/30/40 and the European one 16/20/25/32. TEKNO uses the IEC list common in the Egyptian market."
+      }
+    }
+  ]
+}
+  </script>
+
+
 
 
 
@@ -57,6 +99,35 @@
         <p><a href="../tools.html" data-key="back_to_tools">← Back to all tools</a></p>
       </div>
     </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="how_heading">How it works</h2>
+        <div data-i18n-html="calc_breaker_size_how" style="max-width:75ch"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="example_heading">Worked example</h2>
+        <div data-i18n-html="calc_breaker_size_example" style="max-width:75ch"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="faq_heading">FAQ</h2>
+        <div data-i18n-html="calc_breaker_size_faq" style="max-width:75ch"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 data-i18n="refs_heading">References</h2>
+        <div data-i18n-html="calc_breaker_size_refs" style="max-width:75ch"></div>
+      </div>
+    </section>
+
   </main>
 
   <div id="site-footer"></div>
