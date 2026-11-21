@@ -6,6 +6,8 @@
     // Brand and navigation
     tagline: ["Engineering Made Simple", "الهندسة بكل بساطة"],
     nav_home: ["Home", "الرئيسية"],
+    title_404: ["Page Not Found", "الصفحة غير موجودة"],
+    desc_404: ["The page you requested does not exist. Browse all TEKNO engineering calculators.", "الصفحة المطلوبة غير موجودة. تصفح كل حاسبات TEKNO الهندسية."],
     nav_tools: ["Tools", "الأدوات"],
     lang_btn: ["العربية", "English"],
     footer_about: ["Free, browser-based engineering tools for professionals across all disciplines.", "أدوات هندسية مجانية تعمل داخل المتصفح للمحترفين في جميع التخصصات."],
