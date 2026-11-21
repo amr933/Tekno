@@ -27,7 +27,7 @@
     res_tr_ac: ["In tons of refrigeration", "بالطن التبريدي"],
     res_kw_ac: ["In kilowatts", "بالكيلوواط"],
     res_hp_ac: ["Approx. HP (8000 BTU/h each)", "بالحصان تقريباً (8000 وحدة/حصان)"],
-    lib_as_ac: ["Estimate only: 550 BTU/h per m² base, factors for sun, insulation, occupancy and top floor; HP at 8000 BTU/h (Egyptian convention).", "تقدير استرشادي فقط: أساس 550 وحدة/ساعة لكل م² مع عوامل للشمس والعزل والأشخاص والدور الأخير؛ الحصان = 8000 وحدة/ساعة وفق المتعارف عليه محلياً."],
+    lib_as_ac: ["Estimate only: 550 BTU/h per m² base, factors for sun, insulation, occupancy and top floor. HP here is the Egyptian nominal market class at about 8000 BTU/h each. The recommended size's HP is the nominal market name and can differ from the exact 8000-ratio figure (e.g. 30000 BTU/h is sold as 4 HP, which is 3.75 by exact ratio).", "تقدير استرشادي فقط: أساس 550 وحدة/ساعة لكل م² مع عوامل للشمس والعزل والأشخاص والدور الأخير. الحصان هنا هو التصنيف السوقي الاسمي المتعارف عليه في مصر بحوالي 8000 وحدة/ساعة للحصان. حصان الوحدة المقترحة هو الاسم السوقي الاسمي وقد يختلف عن ناتج قسمة 8000 بالضبط (مثلاً 30000 وحدة/ساعة تُباع كـ 4 حصان، وهي 3.75 بالنسبة الدقيقة)."],
 
     // Cable size (IEC 60364-5-52)
     calc_cable_size_title: ["Cable Size Calculator (IEC 60364)", "حاسبة مقطع الكابل (IEC 60364)"],

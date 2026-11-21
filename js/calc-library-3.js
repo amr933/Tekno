@@ -28,7 +28,8 @@
   ], compute: function (v) {
     var P = v.P; if (v.P_unit === "W") P /= 1000;
     var Qc = P * (Math.tan(Math.acos(v.pf1)) - Math.tan(Math.acos(v.pf2)));
-    return { main: { label: "res_kvar", value: Qc, unit: "kVAR" }, formula: "Qc = P(tan phi1 - tan phi2)", steps: ["Qc=" + fmt(Qc) + " kVAR"], assumptions: ["lib_as_pf"] };
+    var as = ["lib_as_pf"]; if (Qc < 0) as.push("lib_as_pf_neg");
+    return { main: { label: "res_kvar", value: Qc, unit: "kVAR" }, formula: "Qc = P(tan phi1 - tan phi2)", steps: ["Qc=" + fmt(Qc) + " kVAR"], assumptions: as };
   } } });
 
   // Transformer

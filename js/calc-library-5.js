@@ -46,7 +46,7 @@
       steps: [
         "A = " + fmt(A) + " m², sun ×" + fmt(sunF) + ", insulation ×" + fmt(insF) + ", top floor ×" + fmt(topF),
         "BTU = " + fmt(A) + " × 550 × " + fmt(sunF) + " × " + fmt(insF) + " × " + fmt(topF) + " + " + fmt(extra) + " = " + fmt(btu) + " BTU/h",
-        rec ? "next standard size ≥ " + fmt(btu) + " = " + rec[0] + " BTU/h (" + rec[1] + ")" : "above 60000 BTU/h standard units"
+        rec ? "next nominal market size >= " + fmt(btu) + " = " + rec[0] + " BTU/h (" + rec[1] + ")" : "above 60000 BTU/h standard units"
       ],
       assumptions: ["lib_as_ac"]
     };

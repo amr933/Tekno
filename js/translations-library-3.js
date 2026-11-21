@@ -516,6 +516,7 @@
     f_pf_old: ["Current power factor", "معامل القدرة الحالي"],
     f_pf_new: ["Target power factor", "معامل القدرة المستهدف"],
     lib_as_pf: ["Balanced load, sinusoidal supply.", "حمل متوازن ومصدر جيبي."],
+    lib_as_pf_neg: ["Target pf is below the current pf, so no capacitor is needed. The negative kVAR is shown as computed; it means correction in this direction would need inductive (reactor) compensation, not capacitors.", "معامل القدرة المستهدف أقل من الحالي، فلا حاجة لمكثف. القيمة السالبة معروضة كما حُسبت؛ وتعني أن التصحيح في هذا الاتجاه يحتاج تعويضاً حثياً (ملفات) وليس مكثفات."],
 
     // Transformer
     calc_transformer_title: ["Transformer Calculator", "حاسبة المحولات"],
