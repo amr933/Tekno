@@ -285,5 +285,13 @@
     applyLang();
   }
 
+
+  // ---------- PWA: register service worker (additive; calculators untouched) ----------
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("/sw.js").catch(function () { /* offline install unavailable */ });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", init);
 })();
