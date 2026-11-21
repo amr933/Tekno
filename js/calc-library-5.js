@@ -63,7 +63,7 @@
     B2: [15, 20, 27, 34, 46, 62, 80, 99, 118, 149, 179, 206, 225, 255, 297, 339],
     C:  [17.5, 24, 32, 41, 57, 76, 96, 119, 144, 184, 223, 259, 299, 341, 403, 464]
   };
-  var CABLE_KT = { "25": 1.03, "30": 1, "35": 0.94, "40": 0.87, "45": 0.79, "50": 0.71 };
+  var CABLE_KT = { "25": 1.06, "30": 1, "35": 0.94, "40": 0.87, "45": 0.79, "50": 0.71 };
   reg("cable-size", { calc: { label: "var_calc", fields: [
     { id: "I", type: "number", label: "f_load_current", gt: 0, initial: 40, unit: [["A","A"]] },
     { id: "method", type: "select", label: "f_method", options: [["A1","lib_opt_m_a1"],["B1","lib_opt_m_b1"],["B2","lib_opt_m_b2"],["C","lib_opt_m_c"]], default: "B1" },

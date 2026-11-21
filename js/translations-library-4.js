@@ -4,6 +4,7 @@
   var TEKNO = window.TEKNO;
   if (!TEKNO || !TEKNO.keys) return;
   Object.assign(TEKNO.keys, {
+    lib_err_radii: ["Outer radius must be greater than inner radius.", "يجب أن يكون نصف القطر الخارجي أكبر من نصف القطر الداخلي."],
 
     // ===================== BATCH-4 CALCULATORS =====================
     // Retaining Wall (Rankine)

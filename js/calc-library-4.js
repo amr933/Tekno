@@ -83,6 +83,7 @@
     { id: "r2", type: "number", label: "f_r2", gt: 0, initial: 0.1 },
     { id: "dT", type: "number", label: "f_dT", initial: 100 }
   ], compute: function (v) {
+    if (v.r2 <= v.r1) return { error: "lib_err_radii" };
     var Q = 2 * PI * v.k * v.L * v.dT / Math.log(v.r2 / v.r1);
     return { main: { label: "res_heat_loss", value: Q, unit: "W" }, formula: "Q = 2 pi k L dT / ln(r2/r1)", steps: ["Q=" + fmt(Q) + " W"], assumptions: ["lib_as_ins"] };
   } } });
