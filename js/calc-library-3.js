@@ -12,7 +12,7 @@
   reg("battery-runtime", { calc: { label: "var_calc", fields: [
     { id: "E", type: "number", label: "f_energy", gt: 0, initial: 100, unit: [["Wh","Wh"],["kWh","kWh"]] },
     { id: "P", type: "number", label: "f_power", gt: 0, initial: 20, unit: [["W","W"],["kW","kW"]] },
-    { id: "eta", type: "number", label: "f_eff", gt: 0, initial: 0.9 }
+    { id: "eta", type: "number", label: "f_eff", gt: 0, le: 1, initial: 0.9 }
   ], compute: function (v) {
     var E = v.E; if (v.E_unit === "kWh") E *= 1000;
     var P = v.P; if (v.P_unit === "kW") P *= 1000;
@@ -23,8 +23,8 @@
   // Power factor correction
   reg("pf-correction", { calc: { label: "var_calc", fields: [
     { id: "P", type: "number", label: "f_power", gt: 0, initial: 10, unit: [["kW","kW"],["W","W"]] },
-    { id: "pf1", type: "number", label: "f_pf_old", gt: 0, initial: 0.8 },
-    { id: "pf2", type: "number", label: "f_pf_new", gt: 0, initial: 0.95 }
+    { id: "pf1", type: "number", label: "f_pf_old", gt: 0, le: 1, initial: 0.8 },
+    { id: "pf2", type: "number", label: "f_pf_new", gt: 0, le: 1, initial: 0.95 }
   ], compute: function (v) {
     var P = v.P; if (v.P_unit === "W") P /= 1000;
     var Qc = P * (Math.tan(Math.acos(v.pf1)) - Math.tan(Math.acos(v.pf2)));
@@ -49,8 +49,8 @@
   reg("motor-current", { calc: { label: "var_calc", fields: [
     { id: "P", type: "number", label: "f_power", gt: 0, initial: 5, unit: [["kW","kW"],["W","W"]] },
     { id: "V", type: "number", label: "f_voltage", gt: 0, initial: 400 },
-    { id: "pf", type: "number", label: "f_pf", gt: 0, initial: 0.85 },
-    { id: "eff", type: "number", label: "f_eff", gt: 0, initial: 0.9 }
+    { id: "pf", type: "number", label: "f_pf", gt: 0, le: 1, initial: 0.85 },
+    { id: "eff", type: "number", label: "f_eff", gt: 0, le: 1, initial: 0.9 }
   ], compute: function (v) {
     var P = v.P; if (v.P_unit === "W") P /= 1000;
     var I = P * 1000 / (Math.sqrt(3) * v.V * v.pf * v.eff);
@@ -72,8 +72,8 @@
   reg("battery-bank", { calc: { label: "var_calc", fields: [
     { id: "E", type: "number", label: "f_daily", gt: 0, initial: 5, unit: [["kWh","kWh"],["Wh","Wh"]] },
     { id: "V", type: "number", label: "f_voltage", gt: 0, initial: 48 },
-    { id: "dod", type: "number", label: "f_dod", gt: 0, initial: 0.5 },
-    { id: "eta", type: "number", label: "f_eff", gt: 0, initial: 0.9 },
+    { id: "dod", type: "number", label: "f_dod", gt: 0, le: 1, initial: 0.5 },
+    { id: "eta", type: "number", label: "f_eff", gt: 0, le: 1, initial: 0.9 },
     { id: "days", type: "number", label: "f_autonomy", gt: 0, initial: 1 }
   ], compute: function (v) {
     var E = v.E; if (v.E_unit === "Wh") E /= 1000;
@@ -131,7 +131,7 @@
   // Dew point (Magnus)
   reg("dew-point", { calc: { label: "var_calc", fields: [
     { id: "T", type: "number", label: "f_temp", initial: 25, unit: [["C","C"]] },
-    { id: "RH", type: "number", label: "f_rh", gt: 0, initial: 60 }
+    { id: "RH", type: "number", label: "f_rh", gt: 0, le: 100, initial: 60 }
   ], compute: function (v) {
     var a = 17.27; var b = 237.7;
     var alpha = (a * v.T) / (b + v.T) + Math.log(v.RH / 100);
@@ -142,7 +142,7 @@
   // Psychrometric humidity ratio
   reg("psychrometric", { calc: { label: "var_calc", fields: [
     { id: "T", type: "number", label: "f_temp", initial: 25, unit: [["C","C"]] },
-    { id: "RH", type: "number", label: "f_rh", gt: 0, initial: 60 },
+    { id: "RH", type: "number", label: "f_rh", gt: 0, le: 100, initial: 60 },
     { id: "P", type: "number", label: "f_pressure", gt: 0, initial: 101.325, unit: [["kPa","kPa"]] }
   ], compute: function (v) {
     var P = v.P; if (v.P_unit === "kPa") P *= 1000;
@@ -158,7 +158,7 @@
   reg("fan-power", { calc: { label: "var_calc", fields: [
     { id: "Q", type: "number", label: "f_flow", gt: 0, initial: 1, unit: [["m^3/s","m^3/s"],["cfm","cfm"]] },
     { id: "dp", type: "number", label: "f_dp", gt: 0, initial: 500, unit: [["Pa","Pa"]] },
-    { id: "eta", type: "number", label: "f_eff", gt: 0, initial: 0.7 }
+    { id: "eta", type: "number", label: "f_eff", gt: 0, le: 1, initial: 0.7 }
   ], compute: function (v) {
     var Q = v.Q; if (v.Q_unit === "cfm") Q *= 0.000471947;
     var P = Q * v.dp / v.eta;
@@ -219,7 +219,7 @@
   reg("pneu-cylinder", { calc: { label: "var_calc", fields: [
     { id: "p", type: "number", label: "f_pressure", gt: 0, initial: 6, unit: [["bar","bar"],["psi","psi"]] },
     { id: "D", type: "number", label: "f_bore", gt: 0, initial: 50, unit: [["mm","mm"],["in","in"]] },
-    { id: "eta", type: "number", label: "f_eff", gt: 0, initial: 0.85 }
+    { id: "eta", type: "number", label: "f_eff", gt: 0, le: 1, initial: 0.85 }
   ], compute: function (v) {
     var p = v.p; if (v.p_unit === "bar") p *= 1e5; if (v.p_unit === "psi") p *= 6894.76;
     var D = v.D * (v.D_unit === "in" ? 0.0254 : 0.001);
