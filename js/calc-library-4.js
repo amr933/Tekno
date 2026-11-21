@@ -24,7 +24,7 @@
   reg("stormwater", { calc: { label: "var_calc", fields: [
     { id: "C", type: "number", label: "f_c", gt: 0, initial: 0.5 },
     { id: "i", type: "number", label: "f_intensity", gt: 0, initial: 50, unit: [["mm/h","mm/h"],["in/h","in/h"]] },
-    { id: "A", type: "number", label: "f_area", gt: 0, initial: 2, unit: [["ha","ha"],["acre","acre"]] }
+    { id: "A", type: "number", label: "f_catch_area", gt: 0, initial: 2, unit: [["ha","ha"],["acre","acre"]] }
   ], compute: function (v) {
     var i = v.i; if (v.i_unit === "in/h") i *= 25.4;
     var A = v.A; if (v.A_unit === "acre") A *= 0.404686;
@@ -36,13 +36,13 @@
   reg("darcy-weisbach", { calc: { label: "var_calc", fields: [
     { id: "f", type: "number", label: "f_friction", gt: 0, initial: 0.02 },
     { id: "L", type: "number", label: "f_length", gt: 0, initial: 100, unit: [["m","m"]] },
-    { id: "D", type: "number", label: "f_diameter", gt: 0, initial: 0.1, unit: [["m","m"]] },
+    { id: "D", type: "number", label: "f_pipe_dia", gt: 0, initial: 0.1, unit: [["m","m"]] },
     { id: "v", type: "number", label: "f_velocity", ge: 0, initial: 2, unit: [["m/s","m/s"]] },
     { id: "rho", type: "number", label: "f_density", gt: 0, initial: 1000 }
   ], compute: function (v) {
     var hf = v.f * (v.L / v.D) * (v.v * v.v / (2 * 9.81));
     var dp = v.rho * 9.81 * hf;
-    return { main: { label: "res_hf", value: hf, unit: "m" }, others: [{ label: "res_dp", value: dp, unit: "Pa" }],
+    return { main: { label: "res_hf", value: hf, unit: "m" }, others: [{ label: "res_pdrop", value: dp, unit: "Pa" }],
       formula: "hf = f*(L/D)*v^2/(2g)", steps: ["hf=" + fmt(hf) + " m"], assumptions: ["lib_as_dw"] };
   } } });
 
@@ -68,20 +68,23 @@
     { id: "Tco", type: "number", label: "f_tco", initial: 55 }
   ], compute: function (v) {
     var dT1 = v.Thi - v.Tco; var dT2 = v.Tho - v.Tci;
-    var lmtd = (dT1 - dT2) / Math.log(dT1 / dT2);
+    if (dT1 <= 0 || dT2 <= 0) return { error: "err_gt" };
+    var lmtd;
+    if (Math.abs(dT1 - dT2) < 1e-9) lmtd = dT1;
+    else lmtd = (dT1 - dT2) / Math.log(dT1 / dT2);
     return { main: { label: "res_lmtd", value: lmtd, unit: "K" }, formula: "LMTD = (dT1-dT2)/ln(dT1/dT2)", steps: ["LMTD=" + fmt(lmtd) + " K"], assumptions: ["lib_as_lmtd"] };
   } } });
 
   // Insulation heat loss (cylindrical)
   reg("insulation-loss", { calc: { label: "var_calc", fields: [
-    { id: "k", type: "number", label: "f_k", gt: 0, initial: 0.04 },
+    { id: "k", type: "number", label: "f_thermal_k", gt: 0, initial: 0.04 },
     { id: "L", type: "number", label: "f_length", gt: 0, initial: 10 },
     { id: "r1", type: "number", label: "f_r1", gt: 0, initial: 0.05 },
     { id: "r2", type: "number", label: "f_r2", gt: 0, initial: 0.1 },
     { id: "dT", type: "number", label: "f_dT", initial: 100 }
   ], compute: function (v) {
     var Q = 2 * PI * v.k * v.L * v.dT / Math.log(v.r2 / v.r1);
-    return { main: { label: "res_heat", value: Q, unit: "W" }, formula: "Q = 2 pi k L dT / ln(r2/r1)", steps: ["Q=" + fmt(Q) + " W"], assumptions: ["lib_as_ins"] };
+    return { main: { label: "res_heat_loss", value: Q, unit: "W" }, formula: "Q = 2 pi k L dT / ln(r2/r1)", steps: ["Q=" + fmt(Q) + " W"], assumptions: ["lib_as_ins"] };
   } } });
 
   // Welding heat input
@@ -90,15 +93,22 @@
     { id: "I", type: "number", label: "f_current", gt: 0, initial: 150 },
     { id: "s", type: "number", label: "f_speed", gt: 0, initial: 5, unit: [["mm/s","mm/s"],["mm/min","mm/min"]] }
   ], compute: function (v) {
-    var s = v.s; if (v.s_unit === "mm/min") s /= 60;
-    var HI = v.V * v.I * 60 / (s * 1000);
-    return { main: { label: "res_hi", value: HI, unit: "kJ/mm" }, formula: "HI = V*I*60/(s*1000)", steps: ["HI=" + fmt(HI) + " kJ/mm"], assumptions: ["lib_as_weld"] };
+    var s = v.s;
+    var HI, hiFormula;
+    if (v.s_unit === "mm/min") {
+      HI = v.V * v.I * 60 / (s * 1000);
+      hiFormula = "HI = V*I*60/(s*1000)";
+    } else {
+      HI = v.V * v.I / (s * 1000);
+      hiFormula = "HI = V*I/(s*1000)";
+    }
+    return { main: { label: "res_hi", value: HI, unit: "kJ/mm" }, formula: hiFormula, steps: ["HI=" + fmt(HI) + " kJ/mm"], assumptions: ["lib_as_weld"] };
   } } });
 
   // Cutting speed RPM
   reg("cutting-speed", { calc: { label: "var_calc", fields: [
     { id: "Vc", type: "number", label: "f_vc", gt: 0, initial: 100, unit: [["m/min","m/min"]] },
-    { id: "D", type: "number", label: "f_diameter", gt: 0, initial: 50, unit: [["mm","mm"],["in","in"]] }
+    { id: "D", type: "number", label: "f_dia", gt: 0, initial: 50, unit: [["mm","mm"],["in","in"]] }
   ], compute: function (v) {
     var D = v.D; if (v.D_unit === "in") D *= 25.4;
     var N = 1000 * v.Vc / (PI * D);
@@ -109,7 +119,7 @@
   reg("bend-allowance", { calc: { label: "var_calc", fields: [
     { id: "angle", type: "number", label: "f_angle", gt: 0, initial: 90 },
     { id: "R", type: "number", label: "f_radius", gt: 0, initial: 5, unit: [["mm","mm"],["in","in"]] },
-    { id: "T", type: "number", label: "f_thickness", gt: 0, initial: 2, unit: [["mm","mm"],["in","in"]] },
+    { id: "T", type: "number", label: "f_sheet_thk", gt: 0, initial: 2, unit: [["mm","mm"],["in","in"]] },
     { id: "K", type: "number", label: "f_kfactor", gt: 0, initial: 0.44 }
   ], compute: function (v) {
     var R = v.R; if (v.R_unit === "in") R *= 25.4;

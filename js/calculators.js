@@ -434,8 +434,8 @@
     return [
       { id: "voltage", type: "number", label: "f_voltage", gt: 0, initial: 400 },
       { id: "current", type: "number", label: "f_current", gt: 0, initial: 32 },
-      { id: "distance", type: "number", label: "f_distance", gt: 0, initial: 50 },
-      { id: "area", type: "number", label: "f_area", gt: 0, initial: 6 },
+      { id: "distance", type: "number", label: "f_cable_length", gt: 0, initial: 50 },
+      { id: "area", type: "number", label: "f_cable_area", gt: 0, initial: 6 },
       { id: "material", type: "select", label: "f_material", options: MAT_OPTS, default: "cu" },
       { id: "pf", type: "number", label: "f_pf", gt: 0, le: 1, initial: 0.85 },
       { id: "reactance", type: "number", label: "f_reactance", ge: 0, initial: 0.08, optional: true, default: 0 }

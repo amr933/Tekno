@@ -106,7 +106,7 @@
     lib_res_deflection: ["Maximum deflection", "أقصى هبوط"],
     lib_res_allow: ["Reference limit span ÷ 360", "الحد المرجعي البحر ÷ 360"],
     lib_res_ratio: ["Span-to-deflection ratio", "نسبة البحر إلى الهبوط"],
-    lib_as_beam: ["Simply supported, prismatic beam, linear elastic, small deflections, load applied at midspan (point) or uniform over the span. Self-weight is not included. Check limits in the governing code for your load case and material.", "كمرة بسيطة الارتكاز منشورية ومرنة خطيًا وذات هبوط صغير، والحمل عند المنتصف أو موزع على البحر. لا يشمل الوزن الذاتي. راجع حدود الكود المعتمد لحالة الحمل والمادة."],
+    lib_as_beam_def: ["Simply supported, prismatic beam, linear elastic, small deflections, load applied at midspan (point) or uniform over the span. Self-weight is not included. Check limits in the governing code for your load case and material.", "كمرة بسيطة الارتكاز منشورية ومرنة خطيًا وذات هبوط صغير، والحمل عند المنتصف أو موزع على البحر. لا يشمل الوزن الذاتي. راجع حدود الكود المعتمد لحالة الحمل والمادة."],
 
     // ---- Tank volume ----
     calc_tank_volume_title: ["Tank Volume Calculator", "حاسبة حجم الخزان"],

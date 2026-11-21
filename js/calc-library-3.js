@@ -40,7 +40,7 @@
     var S = v.S; if (v.S_unit === "VA") S /= 1000;
     var ratio = v.Vp / v.Vs;
     var Ip = S * 1000 / v.Vp; var Is = S * 1000 / v.Vs;
-    return { main: { label: "res_ratio", value: ratio, unit: "" }, others: [
+    return { main: { label: "res_turns_ratio", value: ratio, unit: "" }, others: [
       { label: "res_ip", value: Ip, unit: "A" }, { label: "res_is", value: Is, unit: "A" } ],
       formula: "ratio = Vp/Vs ; I = S/V", steps: ["ratio=" + fmt(ratio)], assumptions: ["lib_as_tr"] };
   } } });
@@ -59,7 +59,7 @@
 
   // Generator size
   reg("generator-size", { calc: { label: "var_calc", fields: [
-    { id: "P", type: "number", label: "f_load", gt: 0, initial: 50, unit: [["kW","kW"],["W","W"]] },
+    { id: "P", type: "number", label: "f_load_power", gt: 0, initial: 50, unit: [["kW","kW"],["W","W"]] },
     { id: "sf", type: "number", label: "f_safety", gt: 0, initial: 1.25 }
   ], compute: function (v) {
     var P = v.P; if (v.P_unit === "W") P /= 1000;
@@ -98,7 +98,7 @@
     { id: "dT", type: "number", label: "f_dT", initial: 20 }
   ], compute: function (v) {
     var Q = v.U * v.A * v.dT;
-    return { main: { label: "res_heat", value: Q, unit: "W" }, others: [{ label: "res_kw", value: Q / 1000, unit: "kW" }],
+    return { main: { label: "res_heat", value: Q, unit: "W" }, others: [{ label: "res_heat_kw", value: Q / 1000, unit: "kW" }],
       formula: "Q = U*A*dT", steps: ["Q=" + fmt(Q) + " W"], assumptions: ["lib_as_hl"] };
   } } });
 
@@ -161,8 +161,8 @@
   ], compute: function (v) {
     var Q = v.Q; if (v.Q_unit === "cfm") Q *= 0.000471947;
     var P = Q * v.dp / v.eta;
-    return { main: { label: "res_power", value: P, unit: "W" }, others: [{ label: "res_kw", value: P / 1000, unit: "kW" }],
-      formula: "P = Q*dp/eta", steps: ["P=" + fmt(P) + " W"], assumptions: ["lib_as_fan"] };
+    return { main: { label: "res_power", value: P, unit: "W" }, others: [{ label: "res_fan_kw", value: P / 1000, unit: "kW" }],
+      formula: "P = Q*dp/eta", steps:["P=" + fmt(P) + " W"], assumptions: ["lib_as_fan"] };
   } } });
 
   // Boiler size
@@ -179,7 +179,7 @@
   reg("capacitors", { calc: { label: "var_calc", fields: [
     { id: "C1", type: "number", label: "f_c1", gt: 0, initial: 10, unit: [["uF","uF"]] },
     { id: "C2", type: "number", label: "f_c2", gt: 0, initial: 20, unit: [["uF","uF"]] },
-    { id: "mode", type: "select", label: "f_mode", options: [["series","series"],["parallel","parallel"]] }
+    { id: "mode", type: "select", label: "f_mode", options: [["series","lib_v_series"],["parallel","lib_v_parallel"]] }
   ], compute: function (v) {
     var Ceq = (v.mode === "series") ? (v.C1 * v.C2) / (v.C1 + v.C2) : (v.C1 + v.C2);
     return { main: { label: "res_ceq", value: Ceq, unit: "uF" }, formula: v.mode === "series" ? "1/Ceq = 1/C1 + 1/C2" : "Ceq = C1 + C2", steps: ["Ceq=" + fmt(Ceq) + " uF"], assumptions: ["lib_as_cap"] };
@@ -247,7 +247,7 @@
     var V = v.V; if (v.V_unit === "L") V /= 1000;
     var Q = v.Q; if (v.Q_unit === "L/min") Q /= 60000; if (v.Q_unit === "m^3/h") Q /= 3600;
     var t = V / Q;
-    return { main: { label: "res_time", value: t, unit: "s" }, others: [{ label: "res_min", value: t / 60, unit: "min" }],
+    return { main: { label: "res_fill_time", value: t, unit: "s" }, others: [{ label: "res_min", value: t / 60, unit: "min" }],
       formula: "t = V/Q", steps: ["t=" + fmt(t) + " s"], assumptions: ["lib_as_fill"] };
   } } });
 

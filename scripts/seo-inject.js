@@ -17,6 +17,10 @@ const SITE_URL = (process.env.SITE_URL || 'https://tekno-eg.pages.dev').replace(
 // EN feeds the static <meta name="description"> + og:description + twitter:description.
 // AR is stored on <html data-desc-ar> and applied by js/main.js when the user toggles.
 const DESC_TABLE = {
+  '404.html': {
+    en: 'Page not found. Browse the full TEKNO directory of free bilingual engineering calculators.',
+    ar: 'الصفحة غير موجودة. تصفح دليل TEKNO الكامل للحاسبات الهندسية المجانية ثنائية اللغة.'
+  },
   'tools/unit-converter.html': {
     en: 'Convert between units of length, area, volume, pressure, flow, temperature, power and weight, with the exact conversion factor shown for every step.',
     ar: 'حوّل بين وحدات الطول والمساحة والحجم والضغط والتدفق ودرجة الحرارة والقدرة والوزن، مع عرض معامل التحويل الدقيق في كل خطوة.'

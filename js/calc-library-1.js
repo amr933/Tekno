@@ -336,7 +336,7 @@
       formula: formula,
       steps: [step + " = " + fmt(dMm / 1000) + " m = " + fmt(dMm) + " mm",
         pick("Serviceability check reference: span ÷ 360 =", "مرجع فحص الصلابة: البحر ÷ 360 =") + " " + fmt(allow) + " mm"],
-      assumptions: ["lib_as_beam"]
+      assumptions: ["lib_as_beam_def"]
     };
   }
 

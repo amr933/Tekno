@@ -79,7 +79,7 @@
 
   TEKNO.registerCalc({ id: "pipe-flow", variants: { calc: { label: "var_calc", fields: [
     { id: "v", type: "number", label: "f_velocity", ge: 0, initial: 2, unit: [["m/s","m/s"],["ft/s","ft/s"]] },
-    { id: "d", type: "number", label: "f_diameter", gt: 0, initial: 0.1, unit: [["m","m"],["mm","mm"],["in","in"],["cm","cm"]] }
+    { id: "d", type: "number", label: "f_dia", gt: 0, initial: 0.1, unit: [["m","m"],["mm","mm"],["in","in"],["cm","cm"]] }
   ], compute: function (v) {
     var vel = v.v; if (v.v_unit === "ft/s") vel *= 0.3048;
     var d = v.d; var df = LEN_F[v.d_unit] || 1; d *= df;
@@ -91,7 +91,7 @@
 
   TEKNO.registerCalc({ id: "water-velocity", variants: { calc: { label: "var_calc", fields: [
     { id: "Q", type: "number", label: "f_flow", ge: 0, initial: 0.01, unit: [["m^3/s","m^3/s"],["L/s","L/s"]] },
-    { id: "d", type: "number", label: "f_diameter", gt: 0, initial: 0.1, unit: [["m","m"],["mm","mm"],["in","in"]] }
+    { id: "d", type: "number", label: "f_dia", gt: 0, initial: 0.1, unit: [["m","m"],["mm","mm"],["in","in"]] }
   ], compute: function (v) {
     var Q = v.Q; if (v.Q_unit === "L/s") Q /= 1000;
     var d = v.d; var df = LEN_F[v.d_unit] || 1; d *= df;
@@ -102,12 +102,13 @@
 
   TEKNO.registerCalc({ id: "hazen-williams", variants: { calc: { label: "var_calc", fields: [
     { id: "C", type: "number", label: "f_hw_c", gt: 0, initial: 100 },
-    { id: "d", type: "number", label: "f_diameter", gt: 0, initial: 0.1, unit: [["m","m"],["mm","mm"],["in","in"]] },
+    { id: "d", type: "number", label: "f_dia", gt: 0, initial: 0.1, unit: [["m","m"],["mm","mm"],["in","in"]] },
     { id: "S", type: "number", label: "f_slope", gt: 0, initial: 0.01 }
   ], compute: function (v) {
     var d = v.d; var df = LEN_F[v.d_unit] || 1; d *= df;
-    var vout = 0.849 * v.C * Math.pow(d, 0.63) * Math.pow(v.S, 0.54);
-    return { main: { label: "res_velocity", value: vout, unit: "m/s" }, formula: "v = 0.849 C d^0.63 S^0.54", steps: ["v=" + fmt(vout) + " m/s"], assumptions: ["lib_as_hw"] };
+    var R = d / 4;
+    var vout = 0.849 * v.C * Math.pow(R, 0.63) * Math.pow(v.S, 0.54);
+    return { main: { label: "res_velocity", value: vout, unit: "m/s" }, formula: "v = 0.849 C R^0.63 S^0.54 (R = d/4)", steps: ["v=" + fmt(vout) + " m/s"], assumptions: ["lib_as_hw"] };
   } } } } );
 
   TEKNO.registerCalc({ id: "bernoulli", variants: { calc: { label: "var_calc", fields: [
@@ -173,7 +174,7 @@
   TEKNO.registerCalc({ id: "bolt-torque", variants: { calc: { label: "var_calc", fields: [
     { id: "K", type: "number", label: "f_k", gt: 0, initial: 0.2 },
     { id: "F", type: "number", label: "f_force", gt: 0, initial: 10000, unit: [["N","N"],["kN","kN"]] },
-    { id: "d", type: "number", label: "f_diameter", gt: 0, initial: 0.012, unit: [["m","m"],["mm","mm"],["in","in"]] }
+    { id: "d", type: "number", label: "f_dia", gt: 0, initial: 0.012, unit: [["m","m"],["mm","mm"],["in","in"]] }
   ], compute: function (v) {
     var F = v.F; if (v.F_unit === "kN") F *= 1000;
     var d = v.d * (LEN_F[v.d_unit] || 1);
@@ -218,7 +219,7 @@
   } } } } );
 
   TEKNO.registerCalc({ id: "heat-conduction", variants: { calc: { label: "var_calc", fields: [
-    { id: "k", type: "number", label: "f_k", gt: 0, initial: 0.5 },
+    { id: "k", type: "number", label: "f_thermal_k", gt: 0, initial: 0.5 },
     { id: "A", type: "number", label: "f_area", gt: 0, initial: 1 },
     { id: "dT", type: "number", label: "f_dT", initial: 20 },
     { id: "L", type: "number", label: "f_thickness", gt: 0, initial: 0.1, unit: [["m","m"],["mm","mm"]] }
@@ -248,7 +249,7 @@
       var T = v.T; if (v.T_unit === "C") T += 273.15;
       var P = v.P; if (v.P_unit === "kPa") P *= 1000;
       var R = 8.314; var V = v.n * R * T / P;
-      return { main: { label: "res_volume", value: V, unit: "m^3" }, formula: "V = nRT/P", steps: ["V=" + fmt(V) + " m^3"], assumptions: ["lib_as_ig"] };
+      return { main: { label: "res_vol", value: V, unit: "m^3" }, formula: "V = nRT/P", steps: ["V=" + fmt(V) + " m^3"], assumptions: ["lib_as_ig"] };
     } },
     solve_t: { label: "lib_v_solve_t", fields: [
       { id: "P", type: "number", label: "f_pressure", gt: 0, initial: 101.325, unit: [["kPa","kPa"],["Pa","Pa"]] },

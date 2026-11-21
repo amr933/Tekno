@@ -497,7 +497,187 @@
       "  <dt>هل يمكنني استخدام I بالسم⁴؟</dt>" +
       "  <dd>نعم. اختر 'سم⁴' من قائمة وحدة I. الأداة تحوّل إلى م⁴ داخلياً (1 سم⁴ = 10⁻⁸ م⁴).</dd>" +
       "</dl>"
-    ]
+    ],
 
+    // ===================== BATCH-3 CALCULATORS =====================
+    // Battery Runtime
+    calc_battery_runtime_title: ["Battery Runtime Calculator", "حاسبة زمن تشغيل البطارية"],
+    calc_battery_runtime_desc: ["Battery runtime from energy, load and efficiency.", "زمن تشغيل البطارية من الطاقة والحمل والكفاءة."],
+    calc_battery_runtime_about: ["Estimates how long a battery powers a load.", "تقدّر المدة التي تغذي فيها البطارية حملاً كهربائياً."],
+    f_energy: ["Battery energy (Wh)", "طاقة البطارية (واط·ساعة)"],
+    f_eff: ["Efficiency", "الكفاءة"],
+    res_time: ["Runtime", "زمن التشغيل"],
+    lib_as_bat: ["Usable energy = nameplate energy x efficiency.", "الطاقة المستخدمة = الطاقة الاسمية × الكفاءة."],
+
+    // Power Factor Correction
+    calc_pf_correction_title: ["Power Factor Correction Calculator", "حاسبة تصحيح معامل القدرة"],
+    calc_pf_correction_desc: ["Capacitor kVAR to improve power factor.", "الكيلوفار اللازم من المكثفات لتحسين معامل القدرة."],
+    calc_pf_correction_about: ["Sizes the reactive compensation between two power factors.", "تحسب التعويض المطلوب للانتقال بين معاملَي قدرة."],
+    f_pf_old: ["Current power factor", "معامل القدرة الحالي"],
+    f_pf_new: ["Target power factor", "معامل القدرة المستهدف"],
+    lib_as_pf: ["Balanced load, sinusoidal supply.", "حمل متوازن ومصدر جيبي."],
+
+    // Transformer
+    calc_transformer_title: ["Transformer Calculator", "حاسبة المحولات"],
+    calc_transformer_desc: ["Turns ratio and currents from voltage and kVA.", "نسبة اللفات والتيارات من الجهد والقدرة الظاهرية."],
+    calc_transformer_about: ["Single-phase transformer ratio and full-load currents.", "نسبة محول أحادي الطور وتيارات الحمل الكامل."],
+    f_vp: ["Primary voltage (V)", "جهد الملف الابتدائي (فولت)"],
+    f_vs: ["Secondary voltage (V)", "جهد الملف الثانوي (فولت)"],
+    f_kva: ["Apparent power", "القدرة الظاهرية"],
+    res_turns_ratio: ["Turns ratio", "نسبة اللفات"],
+    res_ip: ["Primary current", "تيار الملف الابتدائي"],
+    res_is: ["Secondary current", "تيار الملف الثانوي"],
+    lib_as_tr: ["Single-phase transformer, ideal ratio.", "محول أحادي الطور بنسبة مثالية."],
+
+    // Motor Current
+    calc_motor_current_desc: ["Full-load current from power, voltage, pf and efficiency.", "تيار الحمل الكامل من القدرة والجهد ومعامل القدرة والكفاءة."],
+    calc_motor_current_about: ["Three-phase motor full-load current estimate.", "تقدير تيار الحمل الكامل لمحرك ثلاثي الأطوار."],
+    res_current: ["Full-load current", "تيار الحمل الكامل"],
+    lib_as_mc: ["Balanced three-phase supply.", "مصدر ثلاثي الأطوار متوازن."],
+
+    // Generator Size
+    calc_generator_size_title: ["Generator Size Calculator", "حاسبة قدرة المولد"],
+    calc_generator_size_desc: ["Generator kVA from load and safety factor.", "قدرة المولد بالكيلوفولت أمبير من الحمل ومعامل الأمان."],
+    calc_generator_size_about: ["Adds a margin to the connected load.", "يضيف هامش أمان إلى الحمل الموصول."],
+    f_load_power: ["Real power", "القدرة الفعالة"],
+    f_safety: ["Safety factor", "معامل الأمان"],
+    res_genset: ["Generator size", "قدرة المولد المطلوبة"],
+    lib_as_gen: ["Continuous rating; check motor starting kVA separately.", "قدرة تشغيل مستمر؛ راجع قدرة بدء المحركات على حدة."],
+
+    // Battery Bank
+    calc_battery_bank_title: ["Battery Bank Calculator", "حاسبة بنك البطاريات"],
+    calc_battery_bank_desc: ["Amp-hour capacity from daily energy and autonomy.", "السعة بالأمبير ساعة من الاستهلاك اليومي وأيام الاستقلالية."],
+    calc_battery_bank_about: ["Sizes a battery bank for off-grid storage.", "تحدد سعة بنك بطاريات للتخزين المستقل عن الشبكة."],
+    f_daily: ["Daily energy use", "الاستهلاك اليومي للطاقة"],
+    f_dod: ["Depth of discharge", "عمق التفريغ"],
+    f_autonomy: ["Days of autonomy", "أيام الاستقلالية"],
+    res_ah: ["Bank capacity", "سعة البنك"],
+    lib_as_bb: ["Includes efficiency and depth-of-discharge limits.", "تشمل الكفاءة وحدود عمق التفريغ."],
+
+    // Cable Resistance
+    calc_cable_resistance_title: ["Cable Resistance Calculator", "حاسبة مقاومة الكابل"],
+    calc_cable_resistance_desc: ["Conductor resistance from resistivity, length and cross-section.", "مقاومة الموصل من المقاومية والطول ومساحة المقطع."],
+    calc_cable_resistance_about: ["DC resistance of a one-way run at 20 °C.", "مقاومة التيار المستمر لموصل في اتجاه واحد عند 20 °م."],
+    f_rho: ["Resistivity", "المقاومية النوعية"],
+    res_R: ["Resistance", "المقاومة"],
+    lib_as_cr: ["One-way conductor length at 20 °C.", "طول الموصل في اتجاه واحد عند 20 °م."],
+
+    // Heating Load
+    calc_heating_load_title: ["Heating Load Calculator", "حاسبة حمل التدفئة"],
+    calc_heating_load_desc: ["Transmission heating load from U-value, area and temperature difference.", "حمل التدفئة الانتقالي من معامل الانتقال والمساحة وفرق الحرارة."],
+    calc_heating_load_about: ["Simplified steady-state heating estimate.", "تقدير مبسط لحمل التدفئة في الحالة المستقرة."],
+    f_u: ["U-value (W/m².K)", "معامل الانتقال الحراري U (واط/م².كلفن)"],
+    res_heat_kw: ["Heating capacity", "قدرة التدفئة"],
+    lib_as_hl: ["Ignores infiltration and solar gains.", "لا يشمل تسرب الهواء والمساهمة الشمسية."],
+
+    // Cooling Load
+    calc_cooling_load_title: ["Cooling Load Calculator", "حاسبة حمل التبريد"],
+    calc_cooling_load_desc: ["Total cooling load from sensible and latent parts.", "حمل التبريد الكلي من الحملين المحسوس والكامن."],
+    calc_cooling_load_about: ["Sum of sensible and latent loads.", "مجموع الحمل المحسوس والحمل الكامن."],
+    f_sensible: ["Sensible load", "الحمل المحسوس"],
+    f_latent: ["Latent load", "الحمل الكامن"],
+    res_total: ["Total load", "الحمل الكلي"],
+    lib_as_cl: ["Rule-of-thumb sizing only.", "تقدير استرشادي فقط."],
+
+    // Duct Size
+    calc_duct_size_title: ["Duct Size Calculator", "حاسبة مقاس الدكت"],
+    calc_duct_size_desc: ["Round duct diameter from airflow and velocity.", "قطر الدكت الدائري من معدل التدفق والسرعة."],
+    calc_duct_size_about: ["Sizes a round duct for the target air velocity.", "يحدد قطر دكت دائري للسرعة الهوائية المستهدفة."],
+    res_duct: ["Duct diameter", "قطر الدكت"],
+    lib_as_duct: ["Round duct; rectangular needs equal-friction conversion.", "دكت دائري؛ المستطيل يحتاج تحويل الاحتكاك المكافئ."],
+
+    // Dew Point
+    calc_dew_point_title: ["Dew Point Calculator", "حاسبة نقطة الندى"],
+    calc_dew_point_desc: ["Dew point from dry-bulb temperature and relative humidity.", "نقطة الندى من درجة الحرارة الجافة والرطوبة النسبية."],
+    calc_dew_point_about: ["Magnus formula estimate.", "تقدير بمعادلة ماجنوس."],
+    f_rh: ["Relative humidity (%)", "الرطوبة النسبية (%)"],
+    res_dp: ["Dew point", "نقطة الندى"],
+    lib_as_dp: ["Valid for normal comfort ranges.", "صالح لنطاقات الراحة المعتادة."],
+
+    // Psychrometric
+    calc_psychrometric_title: ["Psychrometric Calculator", "حاسبة خصائص الهواء الرطب"],
+    calc_psychrometric_desc: ["Humidity ratio and enthalpy from temperature, RH and pressure.", "نسبة الرطوبة والإنثالبي من الحرارة والرطوبة النسبية والضغط."],
+    calc_psychrometric_about: ["Moist air properties at a given state point.", "خصائص الهواء الرطب عند نقطة حالة معينة."],
+    res_h: ["Enthalpy", "الإنثالبي"],
+    lib_as_psych: ["Ideal-gas moist air model.", "نموذج الغاز المثالي للهواء الرطب."],
+
+    // Fan Power
+    calc_fan_power_desc: ["Fan shaft power from airflow, pressure rise and efficiency.", "قدرة عمود المروحة من التدفق وارتفاع الضغط والكفاءة."],
+    calc_fan_power_about: ["Fan power estimate for HVAC duty.", "تقدير قدرة مروحة لأعمال التكييف."],
+    f_dp: ["Pressure difference", "فرق الضغط"],
+    res_fan_kw: ["Power (kW)", "القدرة (كيلوواط)"],
+    lib_as_fan: ["Total efficiency including motor and drive.", "الكفاءة الكلية تشمل المحرك ونظام القيادة."],
+
+    // Boiler Size
+    calc_boiler_size_title: ["Boiler Size Calculator", "حاسبة قدرة الغلاية"],
+    calc_boiler_size_desc: ["Boiler capacity from heating load and safety factor.", "قدرة الغلاية من حمل التدفئة ومعامل الأمان."],
+    calc_boiler_size_about: ["Adds a margin to the design heating load.", "يضيف هامشاً إلى حمل التدفئة التصميمي."],
+    res_boiler: ["Boiler capacity", "قدرة الغلاية"],
+    lib_as_boil: ["Check domestic hot water demand separately.", "راجع احتياج الماء الساخن الصحي على حدة."],
+
+    // Capacitors
+    calc_capacitors_title: ["Capacitors Calculator", "حاسبة المكثفات"],
+    calc_capacitors_desc: ["Equivalent capacitance in series or parallel.", "السعة المكافئة على التوالي أو التوازي."],
+    calc_capacitors_about: ["Combines two capacitors.", "تجمع بين مكثفين."],
+    f_c1: ["Capacitor C1", "المكثف C1"],
+    f_c2: ["Capacitor C2", "المكثف C2"],
+    f_mode: ["Connection", "طريقة التوصيل"],
+    res_ceq: ["Equivalent capacitance", "السعة المكافئة"],
+    lib_as_cap: ["Ideal capacitors, no tolerances.", "مكثفات مثالية بدون تفاوتات."],
+
+    // Resistor Colour Code
+    calc_resistor_colour_title: ["Resistor Colour Code Calculator", "حاسبة الشفرة اللونية للمقاومات"],
+    calc_resistor_colour_desc: ["Resistance from colour bands.", "قيمة المقاومة من الأشرطة اللونية."],
+    calc_resistor_colour_about: ["Reads a 4-band resistor.", "تقرأ مقاومة ذات أربعة أشرطة."],
+    f_band1: ["First band", "الشريط الأول"],
+    f_band2: ["Second band", "الشريط الثاني"],
+    f_mult: ["Multiplier band", "شريط المضاعف"],
+    f_tol: ["Tolerance (%)", "التفاوت (%)"],
+    res_value: ["Resistance", "المقاومة"],
+    res_tol: ["Tolerance", "التفاوت"],
+    lib_as_rc: ["Standard 4-band values.", "قيم قياسية لأربعة أشرطة."],
+
+    // Solar Array
+    calc_solar_array_desc: ["Panel count and array kWp from daily energy and sun hours.", "عدد الألواح وقدرة المصفوفة من الاستهلاك اليومي وساعات الشمس."],
+    calc_solar_array_about: ["Sizes a PV array for a daily energy target.", "تحدد مصفوفة شمسية لهدف طاقة يومي."],
+    f_psh: ["Peak sun hours", "ساعات الشمس القصوى"],
+    f_pr: ["Performance ratio", "معامل الأداء"],
+    f_panel: ["Panel rating", "قدرة اللوح الواحد"],
+    res_panels: ["Panels needed", "عدد الألواح المطلوب"],
+    res_kwp: ["Array size", "قدرة المصفوفة"],
+    lib_as_sol: ["Rounded up to whole panels.", "يُقرَّب لأعلى إلى عدد صحيح من الألواح."],
+
+    // Hydraulic Cylinder
+    calc_hyd_cylinder_title: ["Hydraulic Cylinder Calculator", "حاسبة الأسطوانة الهيدروليكية"],
+    calc_hyd_cylinder_desc: ["Extend and retract forces from pressure and diameters.", "قوى البسط والسحب من الضغط والأقطار."],
+    calc_hyd_cylinder_about: ["Double-acting cylinder forces.", "قوى الأسطوانة ثنائية الفعل."],
+    f_bore: ["Bore diameter", "قطر الأسطوانة"],
+    f_rod: ["Rod diameter", "قطر الساق"],
+    res_fext: ["Extend force", "قوة البسط"],
+    res_fret: ["Retract force", "قوة السحب"],
+    lib_as_hyd: ["Theoretical forces, no friction.", "قوى نظرية بدون احتكاك."],
+
+    // Pneumatic Cylinder
+    calc_pneu_cylinder_title: ["Pneumatic Cylinder Calculator", "حاسبة الأسطوانة الهوائية"],
+    calc_pneu_cylinder_desc: ["Cylinder force from air pressure and bore.", "قوة الأسطوانة من ضغط الهواء والقطر."],
+    calc_pneu_cylinder_about: ["Single-acting estimate with efficiency.", "تقدير أحادي الفعل مع الكفاءة."],
+    res_force: ["Force", "القوة"],
+    lib_as_pneu: ["Includes a user-set efficiency factor.", "يشمل معامل كفاءة يحدده المستخدم."],
+
+    // Valve Cv
+    calc_valve_cv_title: ["Valve Cv Calculator", "حاسبة معامل الصمام Cv"],
+    calc_valve_cv_desc: ["Flow coefficient from flow, specific gravity and pressure drop.", "معامل التدفق من معدل التدفق والكثافة النوعية وهبوط الضغط."],
+    calc_valve_cv_about: ["Liquid service Cv sizing.", "تحديد Cv للسوائل."],
+    f_sg: ["Specific gravity", "الكثافة النوعية"],
+    res_cv: ["Flow coefficient", "معامل التدفق"],
+    lib_as_cv: ["Water-like liquids, non-flashing.", "للسوائل الشبيهة بالماء بدون تبخر لحظي."],
+
+    // Tank Fill Time
+    calc_tank_fill_time_title: ["Tank Fill Time Calculator", "حاسبة زمن ملء الخزان"],
+    calc_tank_fill_time_desc: ["Fill time from volume and flow rate.", "زمن الملء من الحجم ومعدل التدفق."],
+    calc_tank_fill_time_about: ["Constant filling flow assumed.", "يفترض تدفق ملء ثابتاً."],
+    res_fill_time: ["Fill time", "زمن الملء"],
+    res_min: ["Fill time (min)", "زمن الملء (دقيقة)"],
+    lib_as_fill: ["No outflow during filling.", "بدون تصريف أثناء الملء."]
   });
 })();
