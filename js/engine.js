@@ -545,7 +545,15 @@
       return f.type === "select" || (inst.raw[f.id] != null && String(inst.raw[f.id]).trim() !== "");
     });
     inst.render();
-    if (complete) inst.calculate();
+    if (complete) {
+      inst.calculate();
+      // Bring the computed result into view: on phones the inputs panel fills
+      // the first screen, and the point of a shared link is the result.
+      var outBox = inst.root.querySelector(".result") || inst.root.querySelector(".msg-error");
+      var panel = outBox && outBox.closest ? outBox.closest(".panel") : null;
+      var target = panel || outBox;
+      if (target && target.scrollIntoView) target.scrollIntoView({ block: "start" });
+    }
   }
 
   // Re-render every calculator when the language changes. Entered values and the
