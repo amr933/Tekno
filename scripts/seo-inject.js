@@ -17,6 +17,34 @@ const SITE_URL = (process.env.SITE_URL || 'https://tekno-eg.pages.dev').replace(
 // EN feeds the static <meta name="description"> + og:description + twitter:description.
 // AR is stored on <html data-desc-ar> and applied by js/main.js when the user toggles.
 const DESC_TABLE = {
+  'tools/room-ac.html': {
+    en: 'Estimate the air-conditioner size a room needs in BTU/h and HP from its area, sun exposure, insulation, occupancy and floor, with the recommendation shown.',
+    ar: 'قدّر حجم التكييف المناسب للغرفة بوحدة BTU/h والحصان من المساحة والتعرض للشمس والعزل وعدد الأشخاص والدور، مع عرض الوحدة المقترحة.'
+  },
+  'tools/cable-size.html': {
+    en: 'Select the copper cable cross-section for a load current by installation method and ambient temperature per IEC 60364-5-52, with the correction factor shown.',
+    ar: 'اختر مقطع الكابل النحاسي المناسب لتيار الحمل حسب طريقة التمديد ودرجة حرارة الجو وفق IEC 60364-5-52 مع عرض معامل التصحيح.'
+  },
+  'tools/concrete-mix.html': {
+    en: 'Calculate cement bags, sand and gravel quantities for any concrete volume with a selectable mix ratio like 1:2:4.',
+    ar: 'احسب شكاير الأسمنت وكميات الرمل والزلط لأي حجم خرسانة مع اختيار نسبة الخلط مثل 1:2:4.'
+  },
+  'tools/inverter-size.html': {
+    en: 'Size an inverter and battery bank from the home load and backup hours: inverter VA, battery Ah and battery count.',
+    ar: 'حدد سعة الانفرتر وبنك البطاريات من أحمال المنزل وساعات التشغيل: سعة الانفرتر والأمبير.ساعة وعدد البطاريات.'
+  },
+  'tools/breaker-size.html': {
+    en: 'Pick the standard MCB breaker rating for a continuous load current using the 1.25 sizing factor, with the design current shown.',
+    ar: 'اختر سعة القاطع القياسية لتيار الحمل المستمر بمعامل 1.25 مع عرض تيار التصميم.'
+  },
+  'tools/brick-mortar.html': {
+    en: 'Calculate brick count and mortar and plaster quantities for a wall area with the Egyptian standard brick size as the adjustable default.',
+    ar: 'احسب عدد الطوب وكميات مونة البناء والمحارة لمساحة حائط بمقاس الطوبة المصرية القياسية القابل للتعديل.'
+  },
+  'tools/pipe-weight.html': {
+    en: 'Calculate the weight of a pipe from its outer diameter, wall thickness, length and material density, in kg and kg/m.',
+    ar: 'احسب وزن الماسورة من قطرها الخارجي وسماكة جدارها وطولها وكثافة خامتها بالكيلوجرام وكجم/م.'
+  },
   '404.html': {
     en: 'Page not found. Browse the full TEKNO directory of free bilingual engineering calculators.',
     ar: 'الصفحة غير موجودة. تصفح دليل TEKNO الكامل للحاسبات الهندسية المجانية ثنائية اللغة.'

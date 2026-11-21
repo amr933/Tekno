@@ -16,9 +16,13 @@
   <url><loc>https://tekno-eg.pages.dev/tools/bernoulli</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/boiler-size</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/bolt-torque</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tekno-eg.pages.dev/tools/breaker-size</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tekno-eg.pages.dev/tools/brick-mortar</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/cable-resistance</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tekno-eg.pages.dev/tools/cable-size</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/capacitors</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/column-buckling</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tekno-eg.pages.dev/tools/concrete-mix</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/concrete</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/cooling-load</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/cutting-speed</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -37,6 +41,7 @@
   <url><loc>https://tekno-eg.pages.dev/tools/hyd-cylinder</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/ideal-gas</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/insulation-loss</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tekno-eg.pages.dev/tools/inverter-size</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/led-resistor</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/lmtd</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/moment-of-inertia</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -45,6 +50,7 @@
   <url><loc>https://tekno-eg.pages.dev/tools/ohms-law</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/pf-correction</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/pipe-flow</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tekno-eg.pages.dev/tools/pipe-weight</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/pneu-cylinder</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/psychrometric</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/pump</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -52,6 +58,7 @@
   <url><loc>https://tekno-eg.pages.dev/tools/resistors-series-parallel</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/retaining-wall</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/reynolds-number</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tekno-eg.pages.dev/tools/room-ac</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/section-modulus</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/shear-moment</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://tekno-eg.pages.dev/tools/solar-array</loc><lastmod>2026-11-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>

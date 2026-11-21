@@ -19,7 +19,7 @@
       keywords: "unit conversion length area volume pressure flow temperature power weight" },
     { id: "concrete", file: "concrete.html", cat: "civil", popular: true, added: "2026-08-10",
       keywords: "concrete volume cubic metre slab footing beam" },
-    { id: "steel-weight", file: "steel.html", cat: "civil", popular: true, added: "2026-08-10",
+    { id: "steel-weight", file: "steel.html", cat: "materials", popular: true, added: "2026-08-10",
       keywords: "steel rebar bar weight reinforcement diameter" },
     { id: "hvac", file: "hvac.html", cat: "hvac", popular: true, added: "2026-10-05",
       keywords: "hvac tr ton refrigeration kw airflow cfm chilled water gpm cooling" },
@@ -103,6 +103,15 @@
     { id: "insulation-loss", file: "insulation-loss.html", cat: "thermal", popular: false, added: "2026-11-23", keywords: "insulation heat loss cylindrical" },
     { id: "welding-heat", file: "welding-heat.html", cat: "manufacturing", popular: false, added: "2026-11-23", keywords: "welding heat input" },
     { id: "cutting-speed", file: "cutting-speed.html", cat: "manufacturing", popular: false, added: "2026-11-23", keywords: "cutting speed rpm machining" },
-    { id: "bend-allowance", file: "bend-allowance.html", cat: "manufacturing", popular: false, added: "2026-11-23", keywords: "sheet metal bend allowance" }
+    { id: "bend-allowance", file: "bend-allowance.html", cat: "manufacturing", popular: false, added: "2026-11-23", keywords: "sheet metal bend allowance" },
+
+    // Library batch 5
+    { id: "room-ac", file: "room-ac.html", cat: "hvac", popular: true, added: "2026-11-21", keywords: "air conditioner ac sizing room btu hp ton cooling capacity" },
+    { id: "cable-size", file: "cable-size.html", cat: "electrical", popular: true, added: "2026-11-21", keywords: "cable size ampacity cross section iec 60364 copper wire current" },
+    { id: "concrete-mix", file: "concrete-mix.html", cat: "civil", popular: true, added: "2026-11-21", keywords: "concrete mix cement bags sand gravel quantities ratio" },
+    { id: "inverter-size", file: "inverter-size.html", cat: "electrical", popular: true, added: "2026-11-21", keywords: "inverter ups sizing battery backup hours ah va home load" },
+    { id: "breaker-size", file: "breaker-size.html", cat: "electrical", popular: false, added: "2026-11-21", keywords: "breaker mcb sizing rating protection load current" },
+    { id: "brick-mortar", file: "brick-mortar.html", cat: "civil", popular: true, added: "2026-11-21", keywords: "brick block mortar plaster wall quantity masonry" },
+    { id: "pipe-weight", file: "pipe-weight.html", cat: "materials", popular: false, added: "2026-11-21", keywords: "pipe weight tube mass steel copper diameter thickness" },
   ];
 })();
