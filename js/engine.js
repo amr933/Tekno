@@ -113,7 +113,7 @@
     var fields = this.variantDef().fields;
     this.raw = {};
     fields.forEach(function (f) {
-      if (f.type === "select") self.raw[f.id] = f.default;
+      if (f.type === "select") self.raw[f.id] = f.default != null ? f.default : (f.options && f.options.length ? f.options[0][0] : f.default);
       else {
         self.raw[f.id] = f.initial != null ? String(f.initial) : "";
         if (f.unit) {
@@ -273,7 +273,7 @@
             defId = f.unit.id; defaultId = f.unit.default || f.unit.id;
             opts = f.unit.options.map(function (pair) { return [pair[0], t(pair[1])]; });
           }
-          var unitKey = f.id + "_unit";
+          var unitKey = Array.isArray(f.unit) ? f.id + "_unit" : f.unit.id;
           var uid = fieldKey(def, self.variant, unitKey);
           var usel = selectEl(uid, opts, self.raw[unitKey]);
           usel.setAttribute("data-field", unitKey);
