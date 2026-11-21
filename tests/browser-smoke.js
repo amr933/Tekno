@@ -110,7 +110,7 @@ const ok = (msg) => console.log('ok    ' + msg);
     const { ctx, page } = await newPage();
     await page.goto(URL_OF('tools.html'));
     const cards = () => page.locator('#tools-grid > *').count();
-    if ((await cards()) !== 65) fail('directory should list 65 tools');
+    if ((await cards()) !== 72) fail('directory should list 72 tools');
     await page.locator('#tools-q').fill('concrete');
     if ((await cards()) !== 2) fail('search "concrete" should match concrete and thermal expansion (2 tools)');
     await page.locator('#tools-q').fill('');
