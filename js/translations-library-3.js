@@ -542,7 +542,7 @@
     f_load_power: ["Real power", "القدرة الفعالة"],
     f_safety: ["Safety factor", "معامل الأمان"],
     res_genset: ["Generator size", "قدرة المولد المطلوبة"],
-    lib_as_gen: ["Continuous rating; check motor starting kVA separately.", "قدرة تشغيل مستمر؛ راجع قدرة بدء المحركات على حدة."],
+    lib_as_gen: ["Continuous-rating estimate only. pf is your load power factor; default 0.8 is the usual diesel genset rating basis (single-phase resistive loads: 1.0). Not a complete genset selection: check motor starting kVA, step voltage/frequency dip, altitude and temperature derating, and standby vs prime rating separately.", "تقدير للقدرة المستمرة فقط. معامل القدرة pf هو معامل قدرة الحمل عندك؛ الافتراضي 0.8 هو الأساس المعتاد لتصنيف المولدات (للأحمال الأحادية المقاومة: 1.0). النتيجة ليست اختياراً كاملاً للمولد: راجع قدرة بدء المحركات وهبوط الجهد والتردد لحظة التحميل وتخفيض القدرة مع الارتفاع ودرجة الحرارة والفرق بين قدرة الاستعداد والقدرة المستمرة، كل على حدة."],
 
     // Battery Bank
     calc_battery_bank_title: ["Battery Bank Calculator", "حاسبة بنك البطاريات"],

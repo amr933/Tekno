@@ -60,11 +60,12 @@
   // Generator size
   reg("generator-size", { calc: { label: "var_calc", fields: [
     { id: "P", type: "number", label: "f_load_power", gt: 0, initial: 50, unit: [["kW","kW"],["W","W"]] },
-    { id: "sf", type: "number", label: "f_safety", gt: 0, initial: 1.25 }
+    { id: "sf", type: "number", label: "f_safety", gt: 0, initial: 1.25 },
+    { id: "pf", type: "number", label: "f_pf", gt: 0, le: 1, initial: 0.8 }
   ], compute: function (v) {
     var P = v.P; if (v.P_unit === "W") P /= 1000;
-    var S = P * v.sf;
-    return { main: { label: "res_genset", value: S, unit: "kVA (approx)" }, formula: "S = P*sf", steps: ["S=" + fmt(S)], assumptions: ["lib_as_gen"] };
+    var S = P * v.sf / v.pf;
+    return { main: { label: "res_genset", value: S, unit: "kVA (approx)" }, formula: "S = P*sf/pf", steps: ["S=" + fmt(S)], assumptions: ["lib_as_gen"] };
   } } });
 
   // Battery bank size
