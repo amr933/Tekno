@@ -48,9 +48,16 @@
     if (typeof x !== "number" || !isFinite(x)) return "—";
     if (x === 0) return "0";
     var a = Math.abs(x);
-    if (a >= 1e9 || a < 1e-4) return x.toExponential(4);
-    var digits = a >= 100 ? 2 : a >= 1 ? 4 : 6;
+    if (a >= 1e9 || a < 1e-6) return x.toExponential(4);
+    var digits = a >= 100 ? 2 : a >= 1 ? 4 : Math.min(10, Math.ceil(-Math.log10(a)) + 4);
     return x.toLocaleString("en-US", { maximumFractionDigits: digits });
+  }
+
+  // Isolate Latin/number math runs so they keep LTR order inside RTL Arabic text.
+  function bidiSafe(s) {
+    return String(s).replace(/[0-9A-Za-z][0-9A-Za-z.,+\-*\/×÷=()^°²³% ]*[0-9A-Za-z.)²³%]/g, function (run) {
+      return /[0-9]/.test(run) ? "\u2066" + run + "\u2069" : run;
+    });
   }
 
   function valueText(v) {
@@ -342,9 +349,9 @@
 
     var details = el("div", { class: "details" });
     details.appendChild(el("h3", { text: t("calc_formula") }));
-    details.appendChild(el("div", { class: "formula", text: r.formula }));
+    details.appendChild(el("div", { class: "formula", text: bidiSafe(r.formula) }));
     details.appendChild(el("h3", { text: t("calc_steps") }));
-    details.appendChild(el("div", { class: "steps", text: (r.steps || []).join("\n") }));
+    details.appendChild(el("div", { class: "steps", text: bidiSafe((r.steps || []).join("\n")) }));
     if (r.assumptions && r.assumptions.length) {
       details.appendChild(el("h3", { text: t("calc_assumptions") }));
       var al = el("ul", { class: "assumptions" });
