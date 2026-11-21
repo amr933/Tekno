@@ -1,6 +1,6 @@
 /* TEKNO service worker: offline shell + runtime cache.
  * Bump CACHE on every deploy so updates roll out cleanly. */
-var CACHE = "tekno-v3";
+var CACHE = "tekno-v4";
 var SHELL = [
   "/",
   "/tools",
@@ -99,7 +99,7 @@ var SHELL = [
   "/tools/valve-cv",
   "/tools/voltage-drop",
   "/tools/water-velocity",
-  "/tools/welding-heat.html"
+  "/tools/welding-heat"
 ];
 
 self.addEventListener("install", function (e) {
@@ -130,9 +130,17 @@ self.addEventListener("fetch", function (e) {
         caches.open(CACHE).then(function (c) { c.put(req, copy); });
         return res;
       }).catch(function () {
-        return caches.match(req).then(function (hit) {
-          return hit || caches.match("/404");
+        var u = new URL(req.url);
+        var variants = [u.pathname];
+        if (u.pathname.slice(-5) === ".html") variants.push(u.pathname.slice(0, -5));
+        if (u.pathname === "/index.html" || u.pathname === "/index") variants.push("/");
+        var chain = caches.match(req).then(function (hit) {
+          return hit || caches.match(req, { ignoreSearch: true });
         });
+        variants.forEach(function (p) {
+          chain = chain.then(function (hit) { return hit || caches.match(p); });
+        });
+        return chain.then(function (hit) { return hit || caches.match("/404"); });
       })
     );
     return;
