@@ -323,13 +323,13 @@
     var r = this.result;
     var box = el("div", { class: "result" });
     box.appendChild(el("div", { class: "label", text: t(r.main.label) }));
-    box.appendChild(el("div", { class: "value", text: valueText(r.main.value) + (r.main.unit ? " " + r.main.unit : "") }));
+    box.appendChild(el("div", { class: "value", text: "\u2066" + valueText(r.main.value) + (r.main.unit ? " " + r.main.unit : "") + "\u2069" }));
 
     if (r.others && r.others.length) {
       box.appendChild(el("div", { class: "label", text: t("calc_other"), style: "margin-top:.8rem" }));
       var ul = el("ul", { class: "assumptions", style: "list-style:none;padding:0;margin:0" });
       r.others.forEach(function (o) {
-        ul.appendChild(el("li", { text: t(o.label) + ": " + valueText(o.value) + (o.unit ? " " + o.unit : "") }));
+        ul.appendChild(el("li", { text: t(o.label) + ": \u2066" + valueText(o.value) + (o.unit ? " " + o.unit : "") + "\u2069" }));
       });
       box.appendChild(ul);
     }
