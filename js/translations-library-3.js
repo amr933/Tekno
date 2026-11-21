@@ -360,25 +360,25 @@
     // ===================== GENERATOR SIZE =====================
     calc_generator_size_how: [
       "This calculator sizes a standby generator in kVA from the total connected load in kW and a sizing factor (reserve margin). " +
-      "Apparent power S (kVA) = P (kW) × sf, where sf is the sizing factor (typically 1.1–1.3 for commercial, 1.25–1.5 for industrial with motor starting). " +
-      "The factor accounts for power factor (kW ≠ kVA), motor starting transients, future load growth, and harmonics. " +
+      "Apparent power S (kVA) = P (kW) × sf ÷ pf, where pf is the load power factor (default 0.8, the usual diesel genset rating basis; use 1.0 for single-phase resistive loads) and sf is the sizing factor (typically 1.1–1.3 for commercial, 1.25–1.5 for industrial with motor starting). " +
+      "The sizing factor covers motor starting transients, future load growth, and harmonics; the power factor converts real power kW to apparent power kVA. " +
       "The tool outputs the minimum generator apparent power in kVA. " +
       "Use it for preliminary generator selection, budget estimates, and checking if an existing genset can handle a new load. " +
       "For final sizing, perform a motor-starting study (voltage dip) and harmonic analysis per ISO 8528 and the genset manufacturer's data.",
       "تحسب هذه الحاسبة حجم المولد الاحتياطي بالكيلوفولت أمبير من إجمالي الحمل الموصل بالكيلوواط ومعامل تحديد الحجم (هامش احتياطي). " +
-      "القدرة الظاهرية S (كيلوفولت أمبير) = P (كيلوواط) × sf، حيث sf معامل التحديد (عادة 1.1–1.3 للتجاري، 1.25–1.5 للصناعي مع بدء المحركات). " +
-      "المعامل يراعي معامل القدرة (كيلوواط ≠ كيلوفولت أمبير)، حالات بدء المحركات، نمو الحمل المستقبلي، والهارمونيك. " +
+      "القدرة الظاهرية S (كيلوفولت أمبير) = P (كيلوواط) × sf ÷ pf، حيث pf معامل قدرة الحمل (الافتراضي 0.8 وهو الأساس المعتاد لتصنيف المولدات؛ استخدم 1.0 للأحمال الأحادية المقاومة) وsf معامل التحديد (عادة 1.1–1.3 للتجاري، 1.25–1.5 للصناعي مع بدء المحركات). " +
+      "معامل التحديد يراعي حالات بدء المحركات ونمو الحمل المستقبلي والهارمونيك؛ أما معامل القدرة فيحول القدرة الفعالة كيلوواط إلى قدرة ظاهرية كيلوفولت أمبير. " +
       "تخرج الأداة أدنى قدرة ظاهرية للمولد بالكيلوفولت أمبير. " +
       "استخدمها للاختيار المبدئي للمولد، تقديرات الميزانية، والتحقق من قدرة مولد قائم على حمل جديد. " +
       "للتحديد النهائي، أجرِ دراسة بدء محركات (هبوط جهد) وتحليل هارمونيك حسب ISO 8528 وبيانات مصنع المولد."
     ],
     calc_generator_size_example: [
-      "Example: Total connected load = 50 kW, sizing factor = 1.25. " +
-      "S = 50 × 1.25 = 62.5 kVA. " +
-      "Select a genset rated ≥ 62.5 kVA (typically 65 kVA or 75 kVA standard rating).",
-      "مثال: إجمالي الحمل الموصل = 50 كيلوواط، معامل تحديد = 1.25. " +
-      "S = 50 × 1.25 = 62.5 كيلوفولت أمبير. " +
-      "اختر مولداً مقنن ≥ 62.5 كيلوفولت أمبير (عادة 65 أو 75 كيلوفولت أمبير تصنيف قياسي)."
+      "Example: Total connected load = 50 kW, sizing factor = 1.25, load power factor = 0.8. " +
+      "S = 50 × 1.25 ÷ 0.8 = 78.1 kVA. " +
+      "Select a genset rated ≥ 78.1 kVA (typically 80 kVA or 100 kVA standard rating).",
+      "مثال: إجمالي الحمل الموصل = 50 كيلوواط، معامل تحديد = 1.25، معامل قدرة الحمل = 0.8. " +
+      "S = 50 × 1.25 ÷ 0.8 = 78.1 كيلوفولت أمبير. " +
+      "اختر مولداً مقنن ≥ 78.1 كيلوفولت أمبير (عادة 80 أو 100 كيلوفولت أمبير تصنيف قياسي)."
     ],
     calc_generator_size_faq: [
       "<dl>" +
