@@ -108,6 +108,7 @@
     this.result = null;
     this.resultError = null;
     this.copyState = "";
+    this.shareState = "";
     this.resetRaw();
   }
 
@@ -139,6 +140,7 @@
     this.result = null;
     this.resultError = null;
     this.copyState = "";
+    this.shareState = "";
     this.resetRaw();
     this.render();
   };
@@ -173,6 +175,7 @@
     this.result = null;
     this.resultError = null;
     this.copyState = "";
+    this.shareState = "";
     if (hasError) {
       this.resultError = "calc_fix";
       this.render();
@@ -223,6 +226,64 @@
     }
   };
 
+  Instance.prototype.shareURL = function () {
+    var def = this.def;
+    var params = new URLSearchParams();
+    if (Object.keys(def.variants).length > 1) params.set("variant", this.variant);
+    this.variantDef().fields.forEach(function (f) {
+      if (f.type === "select") {
+        if (this.raw[f.id] != null && this.raw[f.id] !== "") params.set(f.id, this.raw[f.id]);
+      } else {
+        var v = this.raw[f.id];
+        if (v != null && String(v).trim() !== "") params.set(f.id, v);
+        if (f.unit) {
+          var unitKey = Array.isArray(f.unit) ? f.id + "_unit" : f.unit.id;
+          if (this.raw[unitKey] != null && this.raw[unitKey] !== "") params.set(unitKey, this.raw[unitKey]);
+        }
+      }
+    }, this);
+    var path = location.pathname.replace(/\.html$/, "");
+    return location.origin + path + "?" + params.toString();
+  };
+
+  Instance.prototype.share = function () {
+    var self = this;
+    if (!this.result) return;
+    var text = this.copyText();
+    var url = this.shareURL();
+    var done = function (state) { self.shareState = state; self.render(); };
+    if (navigator.share) {
+      navigator.share({ title: document.title, text: text, url: url }).then(function () {
+        done("shared");
+      }, function (err) {
+        if (err && err.name === "AbortError") return;
+        done("fail");
+      });
+      return;
+    }
+    var payload = text + "\n" + url;
+    var okF = function () { done("copied"); };
+    var failF = function () { done("fail"); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(payload).then(okF, fallback);
+    } else {
+      fallback();
+    }
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = payload;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "absolute";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) okF(); else failF();
+    }
+  };
+
   Instance.prototype.buildInputs = function () {
     var self = this;
     var def = this.def;
@@ -241,6 +302,7 @@
         self.result = null;
         self.resultError = null;
         self.copyState = "";
+        self.shareState = "";
         self.resetRaw();
         self.render();
       });
@@ -337,11 +399,21 @@
     var copyRow = el("div", { class: "btn-row", style: "margin-top:.8rem" });
     var copyBtn = el("button", { type: "button", class: "btn btn-secondary", "data-action": "copy", text: t("calc_copy") });
     copyRow.appendChild(copyBtn);
+    var shareBtn = el("button", { type: "button", class: "btn btn-secondary", "data-action": "share", text: t("calc_share") });
+    copyRow.appendChild(shareBtn);
     if (this.copyState) {
       copyRow.appendChild(el("span", {
         class: "copy-status",
         text: t(this.copyState === "ok" ? "calc_copied" : "calc_copy_fail"),
         style: this.copyState === "ok" ? "" : "color:var(--err)"
+      }));
+    }
+    if (this.shareState) {
+      var shareKey = this.shareState === "shared" ? "calc_shared" : (this.shareState === "copied" ? "calc_share_copied" : "calc_share_fail");
+      copyRow.appendChild(el("span", {
+        class: "copy-status",
+        text: t(shareKey),
+        style: this.shareState === "fail" ? "color:var(--err)" : ""
       }));
     }
     box.appendChild(copyRow);
@@ -384,6 +456,7 @@
     this.resultError = null;
     this.lastValues = null;
     this.copyState = "";
+    this.shareState = "";
     var old = this.root.querySelector('[aria-live="polite"]');
     var fresh = this.buildOutput();
     if (old && old.parentNode) old.parentNode.replaceChild(fresh, old);
@@ -398,6 +471,7 @@
     if (action === "calculate") inst.calculate();
     else if (action === "clear") inst.clear();
     else if (action === "copy") inst.copy();
+      else if (action === "share") inst.share();
   }
 
   function mountAll() {
@@ -425,7 +499,53 @@
         }
       });
       inst.render();
+      applySharedInputs(inst);
     });
+  }
+
+  // Shared-result links: prefill inputs from the query string, whitelisted
+  // against this calculator's own definition, then auto-calculate when every
+  // number field has a value. Unknown keys and out-of-range option values
+  // are ignored; numbers re-validate through the normal calculate path.
+  function applySharedInputs(inst) {
+    var q;
+    try { q = new URLSearchParams(window.location.search); } catch (e) { return; }
+    if (!q) return;
+    var def = inst.def;
+    var v = q.get("variant");
+    if (v && def.variants[v]) inst.variant = v;
+    inst.resetRaw();
+    var touched = false;
+    inst.variantDef().fields.forEach(function (f) {
+      if (f.type === "select") {
+        var sv = q.get(f.id);
+        if (sv != null && f.options.some(function (o) { return o[0] === sv; })) {
+          inst.raw[f.id] = sv;
+          touched = true;
+        }
+      } else {
+        var nv = q.get(f.id);
+        if (nv != null && nv !== "") {
+          inst.raw[f.id] = nv;
+          touched = true;
+        }
+        if (f.unit) {
+          var unitKey = Array.isArray(f.unit) ? f.id + "_unit" : f.unit.id;
+          var uv = q.get(unitKey);
+          var opts = Array.isArray(f.unit) ? f.unit : f.unit.options;
+          if (uv != null && opts.some(function (p) { return p[0] === uv; })) {
+            inst.raw[unitKey] = uv;
+            touched = true;
+          }
+        }
+      }
+    });
+    if (!touched) return;
+    var complete = inst.variantDef().fields.every(function (f) {
+      return f.type === "select" || (inst.raw[f.id] != null && String(inst.raw[f.id]).trim() !== "");
+    });
+    inst.render();
+    if (complete) inst.calculate();
   }
 
   // Re-render every calculator when the language changes. Entered values and the
